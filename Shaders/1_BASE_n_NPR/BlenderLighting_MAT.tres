@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b3laeopx5urbi"]
+
+[ext_resource type="Shader" uid="uid://dc6yyel02xq8c" path="res://Shaders/1_BASE_n_NPR/BlenderLighting_SHA.gdshader" id="1_t86h5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_t86h5")
+shader_parameter/test = 0.0
