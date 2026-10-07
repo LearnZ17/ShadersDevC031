@@ -5,4 +5,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_t86h5")
-shader_parameter/test = 0.0
+shader_parameter/flatColor = Color(0.6646277, 0.48154777, 0.3262592, 1)
