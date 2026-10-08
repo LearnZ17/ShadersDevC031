@@ -2,7 +2,12 @@ shader_type spatial;
 render_mode unshaded; // Flat - Don't calculate any type of light
 
 // VAR - UI Uniforms ============================================
+
+
 group_uniforms BlenderLightSystem;
+
+	uniform int modo : hint_enum("FlatColor:0,MatCap:1") = 0;
+	
 	uniform vec3 flatColor : source_color = vec3 (1.0); 
 
 group_uniforms maps;
@@ -13,14 +18,18 @@ group_uniforms maps;
 // Called for every pixel the material is visible on.
 void fragment() 
 {
+	vec3 finalColor = vec3(1.0);
+	
 	// FLAT COLOR
-	ALBEDO = flatColor;
+	if (modo == 0) 
+		finalColor =  flatColor;
+	
 	
 	// MATCAP
 	//ALBEDO = NORMAL;
 	//ALBEDO = (NORMAL * 0.5) + 0.5;
 	
-	mat3 model_view = mat3(VIEW_MATRIX) * mat3(MODEL_MATRIX);
+	//mat3 model_view = mat3(VIEW_MATRIX) * mat3(MODEL_MATRIX);
 	
 	// 1. Transformar la normal local al espacio de vista (View Space)
 	vec3 normal_view = cross(normalize(VIEW), NORMAL);
@@ -33,15 +42,19 @@ void fragment()
 	vec2 uv = rotateVector * 0.5 + 0.5;
 	
 	// 3. Muestrear la textura y asignarla al color final del objeto
-	vec4 diffColor = texture(matcapColor, uv);
-	vec4 specColor = texture(matcapSpecular, uv);
+	vec3 diffColor = texture(matcapColor, uv).rgb;
+	vec3 gamma_diffColor = pow(diffColor, vec3(.45)) * pow(diffColor, vec3(2.2)) ;
+	vec3 specColor = texture(matcapSpecular, uv).rgb;
 	
 	
 	vec3 textColor;
 	if(useSpecular) 
-		textColor = vec3 (1.0) * (flatColor * diffColor.rgb) + specColor.rgb;
+		textColor = vec3 (1.0) * (flatColor * diffColor) + specColor;
 	else
-		textColor = vec3 (1.0) * flatColor * diffColor.rgb;
+		textColor = vec3 (1.0) * flatColor * diffColor;
+		
+	if (modo == 1 )
+		finalColor = textColor;
 	
-	ALBEDO = textColor; //pow(textColor, vec3(0.45)) * pow(textColor, vec3(2.2)) ;
+	ALBEDO = finalColor; //pow(textColor, vec3(0.45)) * pow(textColor, vec3(2.2)) ;
 }
