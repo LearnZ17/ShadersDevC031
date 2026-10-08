@@ -12,7 +12,13 @@ environment = ExtResource("1_nfnk2")
 [node name="monk" parent="." unique_id=529007663 instance=ExtResource("1_30us5")]
 
 [node name="Monk" parent="monk" index="0" unique_id=369908100]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.008613348)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0013871789, 0, -0.024965107)
 surface_material_override/0 = ExtResource("2_w0aiu")
+
+[node name="Sphere3D" type="CSGSphere3D" parent="." unique_id=279105648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6106902, 0.4863268, 0)
+radial_segments = 40
+rings = 15
+material = ExtResource("2_w0aiu")
 
 [editable path="monk"]
