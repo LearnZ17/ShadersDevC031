@@ -8,8 +8,9 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_t86h5")
-shader_parameter/modo = 1
+shader_parameter/modo = 2
 shader_parameter/flatColor = Color(0.7579169, 0.45510393, 0.85329556, 1)
 shader_parameter/matcapColor = ExtResource("2_gj2lh")
 shader_parameter/matcapSpecular = ExtResource("3_q2foq")
 shader_parameter/useSpecular = true
+shader_parameter/angleLight = 0.5000000223518
