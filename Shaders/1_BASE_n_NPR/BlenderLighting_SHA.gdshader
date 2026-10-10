@@ -24,20 +24,13 @@ void fragment()
 	if (modo == 0) 
 		finalColor =  flatColor;
 	
-	
 	// MATCAP
-	//ALBEDO = NORMAL;
-	//ALBEDO = (NORMAL * 0.5) + 0.5;
-	
-	//mat3 model_view = mat3(VIEW_MATRIX) * mat3(MODEL_MATRIX);
-	
 	// 1. Transformar la normal local al espacio de vista (View Space)
 	vec3 normal_view = cross(normalize(VIEW), NORMAL);
 	
+	// 		1.1 Rotation Fix
 	vec2 rotateVector = vec2(  normal_view.y , normal_view.x );
 
-	
-	
 	// 2. Aplicar la fórmula de mapeo UV: (Normal.xy * 0.5 + 0.5)
 	vec2 uv = rotateVector * 0.5 + 0.5;
 	

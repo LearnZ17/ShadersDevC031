@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://p22qsnyctk42"]
+
+[ext_resource type="Environment" uid="uid://rfxd3p7hpwoa" path="res://Shaders/1_BASE_n_NPR/Env/sample_environment.tres" id="1_qbdiq"]
+[ext_resource type="PackedScene" uid="uid://bdnpnjkhfgv78" path="res://Assets/monk.glb" id="2_keg8b"]
+[ext_resource type="Shader" uid="uid://dc6yyel02xq8c" path="res://Shaders/1_BASE_n_NPR/BlenderLighting_SHA.gdshader" id="3_t1yfl"]
+[ext_resource type="Texture2D" uid="uid://di1juf42ijxfs" path="res://Shaders/1_BASE_n_NPR/MatCapTextures/diff_ceramic_lightbulb.png" id="4_n26kk"]
+[ext_resource type="Texture2D" uid="uid://coxovql1raa3p" path="res://Shaders/1_BASE_n_NPR/MatCapTextures/spec_ceramic_lightbulb.png" id="5_pjajo"]
+[ext_resource type="Material" uid="uid://b3laeopx5urbi" path="res://Shaders/1_BASE_n_NPR/BlenderLighting_MAT.tres" id="6_ffv68"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xinbm"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_t1yfl")
+shader_parameter/modo = 1
+shader_parameter/flatColor = Color(1, 1, 1, 1)
+shader_parameter/matcapColor = ExtResource("4_n26kk")
+shader_parameter/matcapSpecular = ExtResource("5_pjajo")
+shader_parameter/useSpecular = true
+
+[node name="Node3D" type="Node3D" unique_id=305063219]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=549786315]
+environment = ExtResource("1_qbdiq")
+
+[node name="monk" parent="." unique_id=529007663 instance=ExtResource("2_keg8b")]
+
+[node name="Monk" parent="monk" index="0" unique_id=369908100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0013871789, 0, -0.024965107)
+surface_material_override/0 = SubResource("ShaderMaterial_xinbm")
+
+[node name="Sphere3D" type="CSGSphere3D" parent="." unique_id=279105648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6106902, 0.4863268, 0)
+radial_segments = 40
+rings = 15
+material = ExtResource("6_ffv68")
+
+[editable path="monk"]
