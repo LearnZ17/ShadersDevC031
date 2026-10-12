@@ -7,7 +7,7 @@ group_uniforms BlenderLightSystem;
 		uniform int lighting : hint_enum("Flat :0, MatCap:1, Studio :2") = 0;
 
 	group_uniforms BlenderLightSystem.Material;
-		uniform vec3 flatColor : source_color = vec3 (1.0); 
+		uniform vec3 color : source_color = vec3 (1.0); 
 		
 		group_uniforms BlenderLightSystem.Material.MatCap;
 			uniform sampler2D matcapColor: source_color, hint_default_white;
@@ -17,20 +17,16 @@ group_uniforms BlenderLightSystem;
 			
 			uniform float angleLight : hint_range(-1.0, 1.0, 0.1);
 
-
-// Called for every pixel the material is visible on.
-void fragment() 
+vec3 flatColorFunct()
 {
-	vec3 finalColor = vec3(1.0);
-	
-	// FLAT COLOR
-	if (lighting == 0) 
-		finalColor =  flatColor;
-		
-	// MATCAP 
-	vec3 _normalView = NORMAL;							// range [-1,1.0]
+	return color;
+}
+
+vec3 MatCapFunct(vec3 _normalView)
+{
+	// _normalView -> range [-1,1.0]
 	float normalScale = 0.98;
-	_normalView = vec3(NORMAL.x, -NORMAL.y, NORMAL.z); 	// inverse correction
+	_normalView = vec3(_normalView.x, -_normalView.y, _normalView.z); 	// inverse correction
 	
 	vec2 matcapUV = _normalView.xy * 0.5 + 0.5;	 		// range [0.0, 1.0]
 	
@@ -49,11 +45,23 @@ void fragment()
 	//vec3 _matcapColor = pow ( 	 texture( matcapColor, 		matcapUV * matcapUVRot).rgb ,	vec3(gamma) );
 	//vec3 _matcapSpecular = pow ( texture( matcapSpecular, 	matcapUV * matcapUVRot).rgb ,	vec3(gamma) );
 	
-	vec3 textColor;
-	if (!addSpecular)
-		ALBEDO = _matcapColor * flatColor;
-	else
-		ALBEDO =  (_matcapColor * flatColor) + _matcapSpecular;
+	return _matcapColor * color + (_matcapSpecular * float(addSpecular));
+}
+
+// Called for every pixel the material is visible on.
+void fragment() 
+{
+	vec3 finalColor = vec3(1.0);
+	
+	// FLAT COLOR
+	if (lighting == 0) 
+		finalColor = flatColorFunct();
+		
+	// MATCAP 
+	
+		
+	if (lighting == 1 )
+		finalColor = MatCapFunction(NORMAL);	
 	
 	// STUDIO LIGHTS
 	// White Light:
@@ -77,7 +85,7 @@ void fragment()
 	float GlossSharp = 256.0;			// Specular >> Brillo Size
 	
 	// COMPONENTS
-	vec3 kD = flatColor * vec3(0.5);
+	vec3 kD = color * vec3(0.5);
 	float kA = 0.015;
 	
 	// WHITE LIGHT
@@ -123,12 +131,11 @@ void fragment()
 	//
 	//vec3 textColor;
 	//if(addSpecular) 
-		//textColor = vec3 (1.0) * (flatColor * diffColor) + specColor;
+		//textColor = vec3 (1.0) * (color * diffColor) + specColor;
 	//else
-		//textColor = vec3 (1.0) * flatColor * diffColor;
+		//textColor = vec3 (1.0) * color * diffColor;
 
-	if (lighting == 1 )
-		finalColor = textColor;
+	
 		
 	ALBEDO = finalColor; //pow(textColor, vec3(0.45)) * pow(textColor, vec3(2.2)) ;
 
