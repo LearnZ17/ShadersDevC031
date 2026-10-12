@@ -30,21 +30,30 @@ vec3 MatCapFunct(vec3 _normalView)
 	
 	vec2 matcapUV = _normalView.xy * 0.5 + 0.5;	 		// range [0.0, 1.0]
 	
-	float _cos = cos (angleLight * PI);
-	float _sin = cos (angleLight * PI);
-	
-	vec2 matcapUVRot;
-	matcapUVRot.x = (_normalView.x * _cos) - (_normalView.y * _sin);
-	matcapUVRot.y = (_normalView.x * _sin) - (_normalView.y * _cos); 
-	matcapUVRot = matcapUVRot * 0.5 + 0.5;
+	//float _cos = cos (angleLight * PI);
+	//float _sin = cos (angleLight * PI);
+	//
+	//vec2 matcapUVRot;
+	//matcapUVRot.x = (_normalView.x * _cos) - (_normalView.y * _sin);
+	//matcapUVRot.y = (_normalView.x * _sin) - (_normalView.y * _cos); 
+	//matcapUVRot = matcapUVRot * 0.5 + 0.5;
 	
 	float gamma = 1.0; // 0.4545 | 2.2  (depends on Linear or sRGB Texture Export Configs)
-	vec3 _matcapColor = pow ( 	 texture( matcapColor, 		matcapUV * normalScale).rgb ,	vec3(gamma) );
-	vec3 _matcapSpecular = pow ( texture( matcapSpecular, 	matcapUV * normalScale).rgb ,	vec3(gamma) );
+	vec3 _matcapColor = 	pow ( texture( matcapColor, 	matcapUV ).rgb ,	vec3(gamma) );
+	vec3 _matcapSpecular = 	pow ( texture( matcapSpecular, 	matcapUV ).rgb ,	vec3(gamma) );
 	
 	//vec3 _matcapColor = pow ( 	 texture( matcapColor, 		matcapUV * matcapUVRot).rgb ,	vec3(gamma) );
 	//vec3 _matcapSpecular = pow ( texture( matcapSpecular, 	matcapUV * matcapUVRot).rgb ,	vec3(gamma) );
 	
+	// Opt 1 : Condition
+	//if (addSpecular) {	return (_matcapColor * color) + _matcapSpecular; }
+	//else { return _matcapColor * color; }
+	
+	// Opt 2 : Ternaric
+	//return addSpecular ? (_matcapColor * color) + _matcapSpecular : 
+							//(_matcapColor * color);
+	
+	// Opt 3 : Bool to float
 	return _matcapColor * color + (_matcapSpecular * float(addSpecular));
 }
 
@@ -58,10 +67,11 @@ void fragment()
 		finalColor = flatColorFunct();
 		
 	// MATCAP 
-	
-		
 	if (lighting == 1 )
-		finalColor = MatCapFunction(NORMAL);	
+		finalColor = MatCapFunct(NORMAL);	
+	
+	float _cos = cos (angleLight * PI);
+	float _sin = cos (angleLight * PI);
 	
 	// STUDIO LIGHTS
 	// White Light:
@@ -111,32 +121,8 @@ void fragment()
 	vec3 L3 = diffuse_3 * LCOL_3 + specular_3;
 	
 	if (lighting == 2)
-		finalColor = L1;
-	
-	//// MATCAP
-	//// 1. Transformar la normal local al espacio de vista (View Space)
-	//vec3 normal_view = cross(normalize(VIEW), NORMAL);
-	//
-	//// 		1.1 Rotation Fix
-	//vec2 rotateVector = vec2(  normal_view.y , normal_view.x );
-//
-	//// 2. Aplicar la fórmula de mapeo UV: (Normal.xy * 0.5 + 0.5)
-	//vec2 uv = rotateVector * 0.5 + 0.5;
-	//
-	//// 3. Muestrear la textura y asignarla al color final del objeto
-	//vec3 diffColor = texture(matcapColor, uv).rgb;
-	//vec3 gamma_diffColor = pow(diffColor, vec3(.45)) * pow(diffColor, vec3(2.2)) ;
-	//vec3 specColor = texture(matcapSpecular, uv).rgb;
-	//
-	//
-	//vec3 textColor;
-	//if(addSpecular) 
-		//textColor = vec3 (1.0) * (color * diffColor) + specColor;
-	//else
-		//textColor = vec3 (1.0) * color * diffColor;
-
-	
+		finalColor = L1;	
 		
-	ALBEDO = finalColor; //pow(textColor, vec3(0.45)) * pow(textColor, vec3(2.2)) ;
+	ALBEDO = finalColor; 
 
 }
