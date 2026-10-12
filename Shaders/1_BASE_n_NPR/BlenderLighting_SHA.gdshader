@@ -3,17 +3,18 @@ render_mode unshaded; // Flat - Don't calculate any type of light
 
 // VAR - UI Uniforms ============================================
 group_uniforms BlenderLightSystem;
-	
-	group_uniforms BlenderLightSystem.Mode;
-		uniform int modo : hint_enum("FlatColor:0, MatCap:1, StudioLighting:2") = 0;
+	group_uniforms BlenderLightSystem.Lighting;
+		uniform int lighting : hint_enum("Flat :0, MatCap:1, Studio :2") = 0;
 
 	group_uniforms BlenderLightSystem.Material;
 		uniform vec3 flatColor : source_color = vec3 (1.0); 
-
+		
 		group_uniforms BlenderLightSystem.Material.MatCap;
 			uniform sampler2D matcapColor: source_color, hint_default_white;
 			uniform sampler2D matcapSpecular: source_color, hint_default_white;
-			uniform bool useSpecular;
+			
+			uniform bool addSpecular = true;
+			
 			uniform float angleLight : hint_range(-1.0, 1.0, 0.1);
 
 
@@ -23,7 +24,7 @@ void fragment()
 	vec3 finalColor = vec3(1.0);
 	
 	// FLAT COLOR
-	if (modo == 0) 
+	if (lighting == 0) 
 		finalColor =  flatColor;
 		
 	// MATCAP 
@@ -49,7 +50,7 @@ void fragment()
 	//vec3 _matcapSpecular = pow ( texture( matcapSpecular, 	matcapUV * matcapUVRot).rgb ,	vec3(gamma) );
 	
 	vec3 textColor;
-	if (!useSpecular)
+	if (!addSpecular)
 		ALBEDO = _matcapColor * flatColor;
 	else
 		ALBEDO =  (_matcapColor * flatColor) + _matcapSpecular;
@@ -101,7 +102,7 @@ void fragment()
 	vec3 L2 = diffuse_2 * LCOL_2 + specular_2;
 	vec3 L3 = diffuse_3 * LCOL_3 + specular_3;
 	
-	if (modo == 2)
+	if (lighting == 2)
 		finalColor = L1;
 	
 	//// MATCAP
@@ -121,13 +122,14 @@ void fragment()
 	//
 	//
 	//vec3 textColor;
-	//if(useSpecular) 
+	//if(addSpecular) 
 		//textColor = vec3 (1.0) * (flatColor * diffColor) + specColor;
 	//else
 		//textColor = vec3 (1.0) * flatColor * diffColor;
 
-	if (modo == 1 )
+	if (lighting == 1 )
 		finalColor = textColor;
+		
 	ALBEDO = finalColor; //pow(textColor, vec3(0.45)) * pow(textColor, vec3(2.2)) ;
 
 }

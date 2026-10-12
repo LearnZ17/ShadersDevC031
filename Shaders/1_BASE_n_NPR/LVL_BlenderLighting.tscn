@@ -7,15 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://tmqwwqggq7fu" path="res://Shaders/1_BASE_n_NPR/MatCapTextures/spec_ceramic_dark.png" id="5_keg8b"]
 [ext_resource type="Material" uid="uid://b3laeopx5urbi" path="res://Shaders/1_BASE_n_NPR/BlenderLighting_MAT.tres" id="6_ffv68"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xinbm"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbdiq"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_t1yfl")
-shader_parameter/modo = 0
+shader_parameter/lighting = 0
 shader_parameter/flatColor = Color(0.81649554, 0.7349818, 0.91200036, 1)
 shader_parameter/matcapColor = ExtResource("4_qbdiq")
 shader_parameter/matcapSpecular = ExtResource("5_keg8b")
-shader_parameter/useSpecular = true
+shader_parameter/addSpecular = false
 shader_parameter/angleLight = 0.90000002831228
 
 [node name="Node3D" type="Node3D" unique_id=305063219]
@@ -27,10 +27,10 @@ environment = ExtResource("1_qbdiq")
 
 [node name="Monk" parent="monk" index="0" unique_id=369908100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0013871789, 0, -0.024965107)
-surface_material_override/0 = SubResource("ShaderMaterial_xinbm")
+surface_material_override/0 = SubResource("ShaderMaterial_qbdiq")
 
 [node name="Sphere3D" type="CSGSphere3D" parent="." unique_id=279105648]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6106902, 0.4863268, 0)
+transform = Transform3D(0.4529971, 0, 0, 0, 0.4529971, 0, 0, 0, 0.4529971, -0.50211376, 0.97126055, -0.0444777)
 radial_segments = 40
 rings = 15
 material = ExtResource("6_ffv68")
