@@ -25,26 +25,26 @@ vec3 flatColorFunct() {
 }
 
 vec3 MatCapFunct(vec3 _normalView) {
+	// MATCAP Projection
 	// _normalView -> range [-1,1.0]
-	float normalScale = 0.99;
+	float normalScale = 0.98;
 	_normalView = vec3(_normalView.x, -_normalView.y, _normalView.z) * normalScale; 	// inverse correction
 	
 	vec2 matcapUV = _normalView.xy * 0.5 + 0.5;	 		// range [0.0, 1.0]
 	
-	//float _cos = cos (angleLight * PI);
-	//float _sin = cos (angleLight * PI);
-	//
-	//vec2 matcapUVRot;
-	//matcapUVRot.x = (_normalView.x * _cos) - (_normalView.y * _sin);
-	//matcapUVRot.y = (_normalView.x * _sin) - (_normalView.y * _cos); 
-	//matcapUVRot = matcapUVRot * 0.5 + 0.5;
+	// ROTATION MATRIX - CENTER ROTATION 
+	float _cos = cos (-angleLight * PI);
+	float _sin = sin (-angleLight * PI);
 	
+	vec2 matcapUVRot;
+	matcapUVRot.x = (_normalView.x * _cos) - (_normalView.y * _sin);
+	matcapUVRot.y = (_normalView.x * _sin) + (_normalView.y * _cos); 
+	matcapUVRot = matcapUVRot * 0.5 + 0.5;
+	
+	// MAPS
 	float gamma = 1.0; // 0.4545 | 2.2  (depends on Linear or sRGB Texture Export Configs)
-	vec3 _matcapColor = 	pow ( texture( matcapColor, 	matcapUV ).rgb ,	vec3(gamma) );
-	vec3 _matcapSpecular = 	pow ( texture( matcapSpecular, 	matcapUV ).rgb ,	vec3(gamma) );
-	
-	//vec3 _matcapColor = pow ( 	 texture( matcapColor, 		matcapUV * matcapUVRot).rgb ,	vec3(gamma) );
-	//vec3 _matcapSpecular = pow ( texture( matcapSpecular, 	matcapUV * matcapUVRot).rgb ,	vec3(gamma) );
+	vec3 _matcapColor = 	pow ( texture( matcapColor, 	matcapUVRot ).rgb ,	vec3(gamma) );
+	vec3 _matcapSpecular = 	pow ( texture( matcapSpecular, 	matcapUVRot ).rgb ,	vec3(gamma) );
 	
 	// Opt 1 : Condition
 	//if (addSpecular) {	return (_matcapColor * color) + _matcapSpecular; }
