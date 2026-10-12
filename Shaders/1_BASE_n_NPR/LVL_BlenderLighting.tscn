@@ -11,10 +11,10 @@
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_t1yfl")
-shader_parameter/lighting = 1
-shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/matcapColor = ExtResource("4_qbdiq")
 shader_parameter/matcapSpecular = ExtResource("5_keg8b")
+shader_parameter/lighting = 1
+shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = true
 shader_parameter/angleLight = 0.90000002831228
 
@@ -26,7 +26,7 @@ environment = ExtResource("1_qbdiq")
 [node name="monk" parent="." unique_id=529007663 instance=ExtResource("2_keg8b")]
 
 [node name="Monk" parent="monk" index="0" unique_id=369908100]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0013871789, 0, -0.024965107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019324422, 0.0034885406, -0.025242865)
 surface_material_override/0 = SubResource("ShaderMaterial_qbdiq")
 
 [node name="Sphere3D" type="CSGSphere3D" parent="." unique_id=279105648]

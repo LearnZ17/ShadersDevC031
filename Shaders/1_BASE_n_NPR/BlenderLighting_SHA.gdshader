@@ -3,30 +3,31 @@ render_mode unshaded; // Flat - Don't calculate any type of light
 
 // VAR - UI Uniforms ============================================
 group_uniforms BlenderLightSystem;
+	group_uniforms BlenderLightSystem.Maps;
+		uniform sampler2D matcapColor: source_color, hint_default_white;
+		uniform sampler2D matcapSpecular: source_color, hint_default_white;
+	
 	group_uniforms BlenderLightSystem.Lighting;
 		uniform int lighting : hint_enum("Flat :0, MatCap:1, Studio :2") = 0;
 
-	group_uniforms BlenderLightSystem.Material;
+	group_uniforms BlenderLightSystem.Properties;
+		// Base Color
 		uniform vec3 color : source_color = vec3 (1.0); 
+		// Specular
+		uniform bool addSpecular = true;
+		// Angle Light
+		uniform float angleLight : hint_range(-1.0, 1.0, 0.1);
 		
-		group_uniforms BlenderLightSystem.Material.MatCap;
-			uniform sampler2D matcapColor: source_color, hint_default_white;
-			uniform sampler2D matcapSpecular: source_color, hint_default_white;
 			
-			uniform bool addSpecular = true;
 			
-			uniform float angleLight : hint_range(-1.0, 1.0, 0.1);
-
-vec3 flatColorFunct()
-{
+vec3 flatColorFunct() {
 	return color;
 }
 
-vec3 MatCapFunct(vec3 _normalView)
-{
+vec3 MatCapFunct(vec3 _normalView) {
 	// _normalView -> range [-1,1.0]
-	float normalScale = 0.98;
-	_normalView = vec3(_normalView.x, -_normalView.y, _normalView.z); 	// inverse correction
+	float normalScale = 0.99;
+	_normalView = vec3(_normalView.x, -_normalView.y, _normalView.z) * normalScale; 	// inverse correction
 	
 	vec2 matcapUV = _normalView.xy * 0.5 + 0.5;	 		// range [0.0, 1.0]
 	
