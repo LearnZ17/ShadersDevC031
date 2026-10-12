@@ -18,8 +18,7 @@ group_uniforms BlenderLightSystem;
 		// Angle Light
 		uniform float angleLight : hint_range(-1.0, 1.0, 0.1);
 		
-			
-			
+// LIGHTING FUNNCTIONS ===========================================
 vec3 flatColorFunct() {
 	return color;
 }
@@ -28,9 +27,11 @@ vec3 MatCapFunct(vec3 _normalView) {
 	// MATCAP Projection
 	// _normalView -> range [-1,1.0]
 	float normalScale = 0.98;
-	_normalView = vec3(_normalView.x, -_normalView.y, _normalView.z) * normalScale; 	// inverse correction
-	
-	vec2 matcapUV = _normalView.xy * 0.5 + 0.5;	 		// range [0.0, 1.0]
+	// inverse correction
+	_normalView = vec3(_normalView.x, -_normalView.y, _normalView.z) 
+					* normalScale; 	
+	// range [0.0, 1.0]
+	vec2 matcapUV = _normalView.xy * 0.5 + 0.5;
 	
 	// ROTATION MATRIX - CENTER ROTATION 
 	float _cos = cos (-angleLight * PI);
@@ -42,9 +43,17 @@ vec3 MatCapFunct(vec3 _normalView) {
 	matcapUVRot = matcapUVRot * 0.5 + 0.5;
 	
 	// MAPS
-	float gamma = 1.0; // 0.4545 | 2.2  (depends on Linear or sRGB Texture Export Configs)
-	vec3 _matcapColor = 	pow ( texture( matcapColor, 	matcapUVRot ).rgb ,	vec3(gamma) );
-	vec3 _matcapSpecular = 	pow ( texture( matcapSpecular, 	matcapUVRot ).rgb ,	vec3(gamma) );
+	// GAMMA : 1.0 | 0.4545 | 2.2  
+	// (depends on Linear or sRGB Texture Export Configs)
+	float gamma = 1.0; 
+	vec3 _matcapColor = 	pow ( 
+									texture( matcapColor, 	matcapUVRot ).rgb ,	
+									vec3(gamma) 
+								);
+	vec3 _matcapSpecular = 	pow ( 
+									texture( matcapSpecular, matcapUVRot ).rgb ,
+									vec3(gamma) 
+								);
 	
 	// Opt 1 : Condition
 	//if (addSpecular) {	return (_matcapColor * color) + _matcapSpecular; }
@@ -52,15 +61,16 @@ vec3 MatCapFunct(vec3 _normalView) {
 	
 	// Opt 2 : Ternaric
 	//return addSpecular ? (_matcapColor * color) + _matcapSpecular : 
-							//(_matcapColor * color);
+							// (_matcapColor * color);
 	
 	// Opt 3 : Bool to float
-	return _matcapColor * color + (_matcapSpecular * float(addSpecular));
+	return _matcapColor * color + 
+			(_matcapSpecular * float(addSpecular));
 }
 
+// FRAGMENT =====================================================
 // Called for every pixel the material is visible on.
-void fragment() 
-{
+void fragment() {
 	vec3 finalColor = vec3(1.0);
 	
 	// FLAT COLOR
@@ -87,13 +97,19 @@ void fragment()
 	vec3 LDIR_3 = vec3(0.76, -0.53, 0.39);
 	vec3 LCOL_3 = vec3(0.06, 0.04, 0.04);
 	
-	LDIR_1 = vec3(LDIR_1.x * _cos - LDIR_1.z * _sin, 	LDIR_1.y, 	LDIR_1.x * _sin * LDIR_1.z * _cos);
-	LDIR_2 = vec3(LDIR_2.x * _cos - LDIR_2.z * _sin, 	LDIR_2.y, 	LDIR_2.x * _sin * LDIR_2.z * _cos);
-	LDIR_3 = vec3(LDIR_3.x * _cos - LDIR_3.z * _sin, 	LDIR_3.y, 	LDIR_3.x * _sin * LDIR_3.z * _cos);
+	LDIR_1 = vec3(	LDIR_1.x * _cos - LDIR_1.z * _sin, 	
+					LDIR_1.y, 	
+					LDIR_1.x * _sin * LDIR_1.z * _cos);
+	LDIR_2 = vec3(	LDIR_2.x * _cos - LDIR_2.z * _sin, 	
+					LDIR_2.y, 	
+					LDIR_2.x * _sin * LDIR_2.z * _cos);
+	LDIR_3 = vec3(	LDIR_3.x * _cos - LDIR_3.z * _sin,
+					LDIR_3.y,
+					LDIR_3.x * _sin * LDIR_3.z * _cos);
 	
-	vec3 N = normalize(NORMAL);			//	Normal:	No Normalizado
-	vec3 V = VIEW;						// 	View:	Ya viene normalizado
-	float GlossSharp = 256.0;			// Specular >> Brillo Size
+	vec3 N = normalize(NORMAL);		//	Normal:	No Normalizado
+	vec3 V = VIEW;					// 	View:	Ya viene normalizado
+	float GlossSharp = 256.0;		// Specular >> Brillo Size
 	
 	// COMPONENTS
 	vec3 kD = color * vec3(0.5);
