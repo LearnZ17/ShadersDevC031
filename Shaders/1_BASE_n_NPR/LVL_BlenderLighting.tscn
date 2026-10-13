@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://coxovql1raa3p" path="res://Shaders/1_BASE_n_NPR/MatCapTextures/spec_ceramic_lightbulb.png" id="5_keg8b"]
 [ext_resource type="Material" uid="uid://b3laeopx5urbi" path="res://Shaders/1_BASE_n_NPR/BlenderLighting_MAT.tres" id="6_ffv68"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4hfw8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbdiq"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_t1yfl")
@@ -27,7 +27,7 @@ environment = ExtResource("1_qbdiq")
 
 [node name="Monk" parent="monk" index="0" unique_id=369908100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.027110793, -0.019488394, 0.015643537)
-surface_material_override/0 = SubResource("ShaderMaterial_4hfw8")
+surface_material_override/0 = SubResource("ShaderMaterial_qbdiq")
 
 [node name="Sphere3D" type="CSGSphere3D" parent="." unique_id=279105648]
 transform = Transform3D(0.3704304, 0, 0, 0, 0.3704304, 0, 0, 0, 0.3704304, 0.46235925, 1.1059959, -0.0444777)

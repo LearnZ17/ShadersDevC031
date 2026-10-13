@@ -70,22 +70,26 @@ vec3 MatCapFunct(vec3 normal) {
 
 vec3 StudioFunct(vec3 normal, vec3 view){
 	
-	
 	// STUDIO LIGHTS
-	// White Light:
+	// 1. White Light:
 	vec3 LDIR_1 = vec3(0.0, 0.64, 0.77);
 	vec3 LCOL_1 = vec3(0.5, 0.50, 0.50);
 	float LSMTH_1 = 0.1;
 	
-	// Green Light:
+	// 2. Green Light:
 	vec3 LDIR_2 = vec3(-0.85, -0.36, 0.39);
 	vec3 LCOL_2 = vec3(0.02, 0.06, 0.06);
 	float LSMTH_2 = 0.34;
 
-	// Purple Light:
+	// 3. Purple Light:
 	vec3 LDIR_3 = vec3(0.76, -0.53, 0.39);
 	vec3 LCOL_3 = vec3(0.06, 0.04, 0.04);
 	float LSMTH_3 = 0.34;
+	
+	// 4. WHITE:
+	vec3 LDIR_4 = vec3(0.03, 0.91, 0.40);
+	vec3 LCOL_4 = vec3(0.0, 0.0, 0.0);
+	float LSMTH_4 = 0.72;
 	
 	// ROTATION MATRIX
 	float _cos = cos (angleLight * PI);
@@ -113,29 +117,41 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	float kA = 0.015;
 	
 	// WHITE LIGHT
+	vec3 specColor1 = vec3(.66, .66,.66);
 	float dotNL_1 = max(0.0, dot(N, normalize(LDIR_1)));
 	vec3 H_1 = normalize(LDIR_1 + V);
 	vec3 diffuse_1 = kD * LCOL_1 * dotNL_1;
 	float specular_1 = pow(max(0.0, dot(N, H_1)), GlossSharp) * LSMTH_1;
 	
 	// GREEN LIGHT
+	vec3 specColor2 = vec3(.03, .06,.63);
 	float dotNL_2 = max(0.0, dot(N, normalize(LDIR_2)));
 	vec3 H_2 = normalize(LDIR_2 + V);
 	vec3 diffuse_2 = kD * LCOL_2 * dotNL_2;
 	float specular_2 = pow(max(0.0, dot(N, H_2)), GlossSharp) * LSMTH_2;
 	
 	// PURPLE LIGHT
+	vec3 specColor3 = vec3(.69, .46,.46);
 	float dotNL_3 = max(0.0, dot(N, normalize(LDIR_3)));
 	vec3 H_3 = normalize(LDIR_3 + V);
 	vec3 diffuse_3 = kD * LCOL_3 * dotNL_3;
 	float specular_3 = pow(max(0.0, dot(N, H_3)), GlossSharp) * LSMTH_3;
 	
-	float toggleSpecular = float (addSpecular) * 1.0;
-	vec3 L1 = diffuse_1 +  (specular_1 * LCOL_1 ) * toggleSpecular;
-	vec3 L2 = diffuse_2 +  (specular_2 * LCOL_2 ) * toggleSpecular;
-	vec3 L3 = diffuse_3 +  (specular_3 * LCOL_3 ) * toggleSpecular;
-
-	return (L1 + L2 + L3);
+	// WHITE LIGHT
+	vec3 specColor4 = vec3(.023, .023,.025);
+	float dotNL_4 = max(0.0, dot(N, normalize(LDIR_4)));
+	vec3 H_4 = normalize(LDIR_4 + V);
+	vec3 diffuse_4 = kD * LCOL_4 * dotNL_4;
+	float specular_4 = pow(max(0.0, dot(N, H_4)), GlossSharp) * LSMTH_4;
+	
+	// LIGHTS AND SPECULAR
+	float toggleSpec = float (addSpecular) * 1.0 ;
+	vec3 L1 = diffuse_1 +  (specular_1 * LCOL_1 ) * (toggleSpec * specColor1);
+	vec3 L2 = diffuse_2 +  (specular_2 * LCOL_2 ) * (toggleSpec * specColor2);
+	vec3 L3 = diffuse_3 +  (specular_3 * LCOL_3 ) * (toggleSpec * specColor3);
+	vec3 L4 = diffuse_4 +  (specular_4 * LCOL_4 ) * (toggleSpec * specColor4);
+	
+	return (L1 + L2 + L3 + L4);
 }
 
 // FRAGMENT =====================================================
