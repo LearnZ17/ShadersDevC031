@@ -23,23 +23,23 @@ vec3 flatColorFunct() {
 	return color;
 }
 
-vec3 MatCapFunct(vec3 _normalView) {
+vec3 MatCapFunct(vec3 normal) {
 	// MATCAP Projection
-	// _normalView -> range [-1,1.0]
+	// normal -> range [-1,1.0]
 	float normalScale = 0.98;
 	// inverse correction
-	_normalView = vec3(_normalView.x, -_normalView.y, _normalView.z) 
+	normal = vec3(normal.x, -normal.y, normal.z) 
 					* normalScale; 	
 	// range [0.0, 1.0]
-	vec2 matcapUV = _normalView.xy * 0.5 + 0.5;
+	vec2 matcapUV = normal.xy * 0.5 + 0.5;
 	
 	// ROTATION MATRIX - CENTER ROTATION 
 	float _cos = cos (-angleLight * PI);
 	float _sin = sin (-angleLight * PI);
 	
 	vec2 matcapUVRot;
-	matcapUVRot.x = (_normalView.x * _cos) - (_normalView.y * _sin);
-	matcapUVRot.y = (_normalView.x * _sin) + (_normalView.y * _cos); 
+	matcapUVRot.x = (normal.x * _cos) - (normal.y * _sin);
+	matcapUVRot.y = (normal.x * _sin) + (normal.y * _cos); 
 	matcapUVRot = matcapUVRot * 0.5 + 0.5;
 	
 	// MAPS
@@ -68,21 +68,8 @@ vec3 MatCapFunct(vec3 _normalView) {
 			(_matcapSpecular * float(addSpecular));
 }
 
-// FRAGMENT =====================================================
-// Called for every pixel the material is visible on.
-void fragment() {
-	vec3 finalColor = vec3(1.0);
+vec3 StudioFunct(vec3 normal, vec3 view){
 	
-	// FLAT COLOR
-	if (lighting == 0) 
-		finalColor = flatColorFunct();
-		
-	// MATCAP 
-	if (lighting == 1 )
-		finalColor = MatCapFunct(NORMAL);	
-	
-	float _cos = cos (angleLight * PI);
-	float _sin = cos (angleLight * PI);
 	
 	// STUDIO LIGHTS
 	// White Light:
@@ -93,26 +80,33 @@ void fragment() {
 	vec3 LDIR_2 = vec3(-0.85, -0.36, 0.39);
 	vec3 LCOL_2 = vec3(0.02, 0.06, 0.06);
 
-	//Purple Light:
+	// Purple Light:
 	vec3 LDIR_3 = vec3(0.76, -0.53, 0.39);
 	vec3 LCOL_3 = vec3(0.06, 0.04, 0.04);
 	
+	// ROTATION MATRIX
+	float _cos = cos (angleLight * PI);
+	float _sin = cos (angleLight * PI);
+	
+	// (L) + ROTATION MATRIX
 	LDIR_1 = vec3(	LDIR_1.x * _cos - LDIR_1.z * _sin, 	
 					LDIR_1.y, 	
-					LDIR_1.x * _sin * LDIR_1.z * _cos);
+					LDIR_1.x * _sin + LDIR_1.z * _cos);
+					
 	LDIR_2 = vec3(	LDIR_2.x * _cos - LDIR_2.z * _sin, 	
 					LDIR_2.y, 	
-					LDIR_2.x * _sin * LDIR_2.z * _cos);
+					LDIR_2.x * _sin + LDIR_2.z * _cos);
+					
 	LDIR_3 = vec3(	LDIR_3.x * _cos - LDIR_3.z * _sin,
 					LDIR_3.y,
-					LDIR_3.x * _sin * LDIR_3.z * _cos);
+					LDIR_3.x * _sin + LDIR_3.z * _cos);
 	
-	vec3 N = normalize(NORMAL);		//	Normal:	No Normalizado
-	vec3 V = VIEW;					// 	View:	Ya viene normalizado
-	float GlossSharp = 256.0;		// Specular >> Brillo Size
+	vec3 N = normal;				//	Normal:	No normalised
+	vec3 V = view;					// 	View:	Already normalised
+	float GlossSharp = 256.0;		// Specular >> Bright Size
 	
-	// COMPONENTS
-	vec3 kD = color * vec3(0.5);
+	// COMPONENTS DIFFUSE | AMBIENT
+	vec3 kD = color * 0.5;
 	float kA = 0.015;
 	
 	// WHITE LIGHT
@@ -133,13 +127,34 @@ void fragment() {
 	vec3 diffuse_3 = kD + LCOL_3 * dotNL_3;
 	float specular_3 = pow(max(0.0, dot(N, H_3)), GlossSharp);
 	
-	vec3 L1 = diffuse_1 * LCOL_1 + specular_1;
-	vec3 L2 = diffuse_2 * LCOL_2 + specular_2;
-	vec3 L3 = diffuse_3 * LCOL_3 + specular_3;
+	float toggleSpecular = float (addSpecular) * 1.0;
+	vec3 L1 = diffuse_1 +  (specular_1 * LCOL_1 ) * toggleSpecular;
+	vec3 L2 = diffuse_2 +  (specular_2 * LCOL_2 ) * toggleSpecular;
+	vec3 L3 = diffuse_3 +  (specular_3 * LCOL_3 ) * toggleSpecular;
+
+	return (L1 + L2 + L3);
+}
+
+// FRAGMENT =====================================================
+// Called for every pixel the material is visible on.
+void fragment() {
+	vec3 finalColor = vec3(1.0);
 	
-	if (lighting == 2)
-		finalColor = L1;	
+	vec3 normal = normalize(NORMAL);  	//	Normal:	No Normalizado
+	vec3 view = VIEW;					// 	View:	Ya viene normalizado
+	
+	// MENU SWITCH
+	switch(lighting){
+		case 0: // FLAT COLOR
+			finalColor = flatColorFunct();
+			break;
+		case 1: // MATCAP 
+			finalColor = MatCapFunct(normal);	
+			break;
+		case 2: // STUDIO
+			finalColor = StudioFunct(normal, view);	
+			break;
+	}
 		
 	ALBEDO = finalColor; 
-
 }
