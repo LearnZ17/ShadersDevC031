@@ -75,14 +75,17 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	// White Light:
 	vec3 LDIR_1 = vec3(0.0, 0.64, 0.77);
 	vec3 LCOL_1 = vec3(0.5, 0.50, 0.50);
-
+	float LSMTH_1 = 0.1;
+	
 	// Green Light:
 	vec3 LDIR_2 = vec3(-0.85, -0.36, 0.39);
 	vec3 LCOL_2 = vec3(0.02, 0.06, 0.06);
+	float LSMTH_2 = 0.34;
 
 	// Purple Light:
 	vec3 LDIR_3 = vec3(0.76, -0.53, 0.39);
 	vec3 LCOL_3 = vec3(0.06, 0.04, 0.04);
+	float LSMTH_3 = 0.34;
 	
 	// ROTATION MATRIX
 	float _cos = cos (angleLight * PI);
@@ -103,29 +106,29 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	
 	vec3 N = normal;				//	Normal:	No normalised
 	vec3 V = view;					// 	View:	Already normalised
-	float GlossSharp = 256.0;		// Specular >> Bright Size
+	float GlossSharp = 256.0;		// Specular >> Bright Size >> X^2
 	
 	// COMPONENTS DIFFUSE | AMBIENT
-	vec3 kD = color * 0.5;
+	vec3 kD = color * vec3(0.5);
 	float kA = 0.015;
 	
 	// WHITE LIGHT
 	float dotNL_1 = max(0.0, dot(N, normalize(LDIR_1)));
 	vec3 H_1 = normalize(LDIR_1 + V);
 	vec3 diffuse_1 = kD + LCOL_1 * dotNL_1;
-	float specular_1 = pow(max(0.0, dot(N, H_1)), GlossSharp);
+	float specular_1 = pow(max(0.0, dot(N, H_1)), GlossSharp) * LSMTH_1;
 	
 	// GREEN LIGHT
 	float dotNL_2 = max(0.0, dot(N, normalize(LDIR_2)));
 	vec3 H_2 = normalize(LDIR_2 + V);
 	vec3 diffuse_2 = kD + LCOL_2 * dotNL_2;
-	float specular_2 = pow(max(0.0, dot(N, H_2)), GlossSharp);
+	float specular_2 = pow(max(0.0, dot(N, H_2)), GlossSharp) * LSMTH_2;
 	
 	// PURPLE LIGHT
 	float dotNL_3 = max(0.0, dot(N, normalize(LDIR_3)));
 	vec3 H_3 = normalize(LDIR_3 + V);
 	vec3 diffuse_3 = kD + LCOL_3 * dotNL_3;
-	float specular_3 = pow(max(0.0, dot(N, H_3)), GlossSharp);
+	float specular_3 = pow(max(0.0, dot(N, H_3)), GlossSharp) * LSMTH_3;
 	
 	float toggleSpecular = float (addSpecular) * 1.0;
 	vec3 L1 = diffuse_1 +  (specular_1 * LCOL_1 ) * toggleSpecular;

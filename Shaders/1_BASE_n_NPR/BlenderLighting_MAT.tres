@@ -13,4 +13,4 @@ shader_parameter/matcapSpecular = ExtResource("3_q2foq")
 shader_parameter/lighting = 2
 shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/addSpecular = true
-shader_parameter/angleLight = -0.39999999105927997
+shader_parameter/angleLight = 1.4901200051653518e-08
