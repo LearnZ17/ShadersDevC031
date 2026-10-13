@@ -109,25 +109,25 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	float GlossSharp = 256.0;		// Specular >> Bright Size >> X^2
 	
 	// COMPONENTS DIFFUSE | AMBIENT
-	vec3 kD = color * vec3(0.5);
+	vec3 kD = color * 0.5;
 	float kA = 0.015;
 	
 	// WHITE LIGHT
 	float dotNL_1 = max(0.0, dot(N, normalize(LDIR_1)));
 	vec3 H_1 = normalize(LDIR_1 + V);
-	vec3 diffuse_1 = kD + LCOL_1 * dotNL_1;
+	vec3 diffuse_1 = kD * LCOL_1 * dotNL_1;
 	float specular_1 = pow(max(0.0, dot(N, H_1)), GlossSharp) * LSMTH_1;
 	
 	// GREEN LIGHT
 	float dotNL_2 = max(0.0, dot(N, normalize(LDIR_2)));
 	vec3 H_2 = normalize(LDIR_2 + V);
-	vec3 diffuse_2 = kD + LCOL_2 * dotNL_2;
+	vec3 diffuse_2 = kD * LCOL_2 * dotNL_2;
 	float specular_2 = pow(max(0.0, dot(N, H_2)), GlossSharp) * LSMTH_2;
 	
 	// PURPLE LIGHT
 	float dotNL_3 = max(0.0, dot(N, normalize(LDIR_3)));
 	vec3 H_3 = normalize(LDIR_3 + V);
-	vec3 diffuse_3 = kD + LCOL_3 * dotNL_3;
+	vec3 diffuse_3 = kD * LCOL_3 * dotNL_3;
 	float specular_3 = pow(max(0.0, dot(N, H_3)), GlossSharp) * LSMTH_3;
 	
 	float toggleSpecular = float (addSpecular) * 1.0;
