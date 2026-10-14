@@ -16,7 +16,7 @@ shader_parameter/matcapSpecular = ExtResource("5_keg8b")
 shader_parameter/lighting = 2
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = true
-shader_parameter/angleLight = 1.4901200051653518e-08
+shader_parameter/angleLight = -0.09999998658891995
 
 [node name="Node3D" type="Node3D" unique_id=305063219]
 

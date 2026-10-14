@@ -87,13 +87,13 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	float LSMTH_3 = 0.34;
 	
 	// 4. WHITE:
-	vec3 LDIR_4 = vec3(0.03, 0.91, 0.40);
+	vec3 LDIR_4 = vec3(0.0, 0.91, 0.4);
 	vec3 LCOL_4 = vec3(0.0, 0.0, 0.0);
-	float LSMTH_4 = 0.72;
+	float LSMTH_4 = 0.7;
 	
 	// ROTATION MATRIX
 	float _cos = cos (angleLight * PI);
-	float _sin = cos (angleLight * PI);
+	float _sin = sin (angleLight * PI);
 	
 	// (L) + ROTATION MATRIX
 	LDIR_1 = vec3(	LDIR_1.x * _cos - LDIR_1.z * _sin, 	
@@ -107,49 +107,53 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	LDIR_3 = vec3(	LDIR_3.x * _cos - LDIR_3.z * _sin,
 					LDIR_3.y,
 					LDIR_3.x * _sin + LDIR_3.z * _cos);
+					
+	LDIR_4 = vec3(	LDIR_4.x * _cos - LDIR_4.z * _sin,
+					LDIR_4.y,
+					LDIR_4.x * _sin + LDIR_4.z * _cos);
 	
 	vec3 N = normal;				//	Normal:	No normalised
 	vec3 V = view;					// 	View:	Already normalised
-	float GlossSharp = 256.0;		// Specular >> Bright Size >> X^2
+	float GlossSharp = 64.0;		// Specular >> Bright Size >> X^2
 	
 	// COMPONENTS DIFFUSE | AMBIENT
 	vec3 kD = color * 0.5;
-	float kA = 0.015;
+	float kA = 0.15 ;
 	
 	// WHITE LIGHT
 	vec3 specColor1 = vec3(.66, .66,.66);
-	float dotNL_1 = max(0.0, dot(N, normalize(LDIR_1)));
+	float dotNL_1 = max(dot(N, normalize(LDIR_1)), 0.0);
 	vec3 H_1 = normalize(LDIR_1 + V);
 	vec3 diffuse_1 = kD * LCOL_1 * dotNL_1;
-	float specular_1 = pow(max(0.0, dot(N, H_1)), GlossSharp) * LSMTH_1;
+	vec3 specular_1 = pow(max(vec3(0.0), dot(N, H_1)), vec3(GlossSharp)) * LSMTH_1;
 	
 	// GREEN LIGHT
 	vec3 specColor2 = vec3(.03, .06,.63);
-	float dotNL_2 = max(0.0, dot(N, normalize(LDIR_2)));
+	float dotNL_2 = max(dot(N, normalize(LDIR_2)), 0.0);
 	vec3 H_2 = normalize(LDIR_2 + V);
 	vec3 diffuse_2 = kD * LCOL_2 * dotNL_2;
-	float specular_2 = pow(max(0.0, dot(N, H_2)), GlossSharp) * LSMTH_2;
+	vec3 specular_2 = pow(max(vec3(0.0), dot(N, H_2)), vec3(GlossSharp)) * LSMTH_2;
 	
 	// PURPLE LIGHT
 	vec3 specColor3 = vec3(.69, .46,.46);
-	float dotNL_3 = max(0.0, dot(N, normalize(LDIR_3)));
+	float dotNL_3 = max(dot(N, normalize(LDIR_3)), 0.0);
 	vec3 H_3 = normalize(LDIR_3 + V);
 	vec3 diffuse_3 = kD * LCOL_3 * dotNL_3;
-	float specular_3 = pow(max(0.0, dot(N, H_3)), GlossSharp) * LSMTH_3;
+	vec3 specular_3 = pow(max(vec3(0.0), dot(N, H_3)), vec3(GlossSharp)) * LSMTH_3;
 	
 	// WHITE LIGHT
-	vec3 specColor4 = vec3(.023, .023,.025);
-	float dotNL_4 = max(0.0, dot(N, normalize(LDIR_4)));
+	vec3 specColor4 = vec3(.02, .02,.02);
+	float dotNL_4 = max(dot(N, normalize(LDIR_4)), 0.0);
 	vec3 H_4 = normalize(LDIR_4 + V);
 	vec3 diffuse_4 = kD * LCOL_4 * dotNL_4;
-	float specular_4 = pow(max(0.0, dot(N, H_4)), GlossSharp) * LSMTH_4;
+	vec3 specular_4 = pow(max(vec3(0.0), dot(N, H_4)), vec3(GlossSharp)) * LSMTH_4;
 	
 	// LIGHTS AND SPECULAR
 	float toggleSpec = float (addSpecular) * 1.0 ;
-	vec3 L1 = diffuse_1 +  (specular_1 * LCOL_1 ) * (toggleSpec * specColor1);
-	vec3 L2 = diffuse_2 +  (specular_2 * LCOL_2 ) * (toggleSpec * specColor2);
-	vec3 L3 = diffuse_3 +  (specular_3 * LCOL_3 ) * (toggleSpec * specColor3);
-	vec3 L4 = diffuse_4 +  (specular_4 * LCOL_4 ) * (toggleSpec * specColor4);
+	vec3 L1 = diffuse_1 +  (specular_1 * LCOL_1 ) * (toggleSpec);
+	vec3 L2 = diffuse_2 +  (specular_2 * LCOL_2 ) * (toggleSpec);
+	vec3 L3 = diffuse_3 +  (specular_3 * LCOL_3 ) * (toggleSpec );
+	vec3 L4 = diffuse_4 +  (specular_4 * LCOL_4 ) * (toggleSpec );
 	
 	return (L1 + L2 + L3 + L4);
 }
@@ -157,10 +161,14 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 // FRAGMENT =====================================================
 // Called for every pixel the material is visible on.
 void fragment() {
-	vec3 finalColor = vec3(1.0);
+	vec3 finalColor;
 	
 	vec3 normal = normalize(NORMAL);  	//	Normal:	No Normalizado
-	vec3 view = VIEW;					// 	View:	Ya viene normalizado
+	
+    // 1. Transformar la normal local al espacio de vista (View Space)
+    vec3 view = cross(VIEW, normal);
+	
+	//vec3 view = VIEW;					// 	View:	Ya viene normalizado
 	
 	// MENU SWITCH
 	switch(lighting){
