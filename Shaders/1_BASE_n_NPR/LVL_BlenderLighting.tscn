@@ -16,7 +16,7 @@ shader_parameter/matcapSpecular = ExtResource("5_keg8b")
 shader_parameter/lighting = 2
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = true
-shader_parameter/angleLight = 1.4901200051653518e-08
+shader_parameter/angleLight = 0.10000001639131995
 
 [node name="Node3D" type="Node3D" unique_id=305063219]
 
@@ -26,11 +26,11 @@ environment = ExtResource("1_qbdiq")
 [node name="monk" parent="." unique_id=529007663 instance=ExtResource("2_keg8b")]
 
 [node name="Monk" parent="monk" index="0" unique_id=369908100]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02719564, 0.19842052, 0.015459418)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11566863, 0.06769973, 0.017592192)
 surface_material_override/0 = SubResource("ShaderMaterial_qbdiq")
 
 [node name="Sphere3D" type="CSGSphere3D" parent="." unique_id=279105648]
-transform = Transform3D(0.3704304, 0, 0, 0, 0.3704304, 0, 0, 0, 0.3704304, 0.48485494, 1.2465892, -0.12422085)
+transform = Transform3D(0.3704304, 0, 0, 0, 0.3704304, 0, 0, 0, 0.3704304, 0.5532718, 1.1948856, -0.12422085)
 radius = 0.4656209
 radial_segments = 40
 rings = 15

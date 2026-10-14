@@ -26,15 +26,15 @@ vec3 flatColorFunct() {
 vec3 MatCapFunct(vec3 normal) {
 	// MATCAP Projection
 	// normal -> range [-1,1.0]
-	float normalScale = 0.98;
+	float normalScale =  0.98;
 	// inverse correction
-	normal = vec3(normal.x, -normal.y, normal.z) 
-					* normalScale; 	
+	normal = vec3(normal.x ,  -normal.y , normal.z) * normalScale; 	
+	
 	// range [0.0, 1.0]
 	vec2 matcapUV = normal.xy * 0.5 + 0.5;
 	
 	// ROTATION MATRIX - CENTER ROTATION 
-	float _cos = cos (-angleLight * PI);
+	float _cos = cos (angleLight * PI);
 	float _sin = sin (-angleLight * PI);
 	
 	vec2 matcapUVRot;
@@ -82,12 +82,12 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	float LSMTH_2 = 0.34;
 
 	// 3. Purple Light:
-	vec3 LDIR_3 = vec3(0.76, -0.53, 0.39);
+	vec3 LDIR_3 = vec3(0.76, -0.53, 0.38);
 	vec3 LCOL_3 = vec3(0.06, 0.04, 0.04);
 	float LSMTH_3 = 0.34;
 	
 	// 4. WHITE:
-	vec3 LDIR_4 = vec3(0.0, 0.91, 0.4);
+	vec3 LDIR_4 = vec3(0.03, 0.91, 0.4);
 	vec3 LCOL_4 = vec3(0.0, 0.0, 0.0);
 	float LSMTH_4 = 0.7;
 	
@@ -96,29 +96,29 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	float _sin = sin (-angleLight * PI);
 	
 	// (L) + ROTATION MATRIX
-	LDIR_1 = vec3(	LDIR_1.x * _cos - LDIR_1.z * _sin, 	
-					LDIR_1.y, 	
-					LDIR_1.x * _sin + LDIR_1.z * _cos);
+	LDIR_1 = normalize(vec3(LDIR_1.x * _cos - LDIR_1.z * _sin , 	
+							LDIR_1.y - 0.4, 	
+							LDIR_1.x * _sin + LDIR_1.z * _cos));
 					
-	LDIR_2 = vec3(	LDIR_2.x * _cos - LDIR_2.z * _sin, 	
-					LDIR_2.y, 	
-					LDIR_2.x * _sin + LDIR_2.z * _cos);
+	LDIR_2 = normalize(vec3(LDIR_2.x * _cos - LDIR_2.z * _sin, 	
+							LDIR_2.y - 0.4, 	
+							LDIR_2.x * _sin + LDIR_2.z * _cos));
 					
-	LDIR_3 = vec3(	LDIR_3.x * _cos - LDIR_3.z * _sin,
-					LDIR_3.y,
-					LDIR_3.x * _sin + LDIR_3.z * _cos);
+	LDIR_3 = normalize(vec3(LDIR_3.x * _cos - LDIR_3.z * _sin,
+							LDIR_3.y - 0.4,
+							LDIR_3.x * _sin + LDIR_3.z * _cos));
 					
-	LDIR_4 = vec3(	LDIR_4.x * _cos - LDIR_4.z * _sin,
-					LDIR_4.y,
-					LDIR_4.x * _sin + LDIR_4.z * _cos);
+	LDIR_4 = normalize(vec3(LDIR_4.x * _cos - LDIR_4.z * _sin,
+							LDIR_4.y - 0.4 ,
+							LDIR_4.x * _sin + LDIR_4.z * _cos));
 	
 	vec3 N = normal;				//	Normal:	No normalised
 	vec3 V = view;					// 	View:	Already normalised
-	float GlossSharp = 16.0;		// Specular >> Bright Size >> X^2
+	float GlossSharp = 32.0;		// Specular >> Bright Size >> X^2
 	
 	// COMPONENTS DIFFUSE | AMBIENT
-	vec3 kD = 			color * 0.85;
-	float kA = 			0.1;
+	vec3 kD = 			color * 0.75;
+	float kA = 			0.01;
 	
 	// WHITE LIGHT
 	vec3 LSPEC_1 = 		normalize(vec3(.66, .66,.66));
@@ -149,7 +149,7 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	float specular_4 = 	pow(max( dot(N, H_4), 0.0), GlossSharp) ;
 	
 	// LIGHTS AND SPECULAR
-	float toggleSpec = 	float (addSpecular) * 5.0 ;
+	float toggleSpec = 	float (addSpecular) * 3.0 ;
 	vec3 L1 = diffuse_1 + (LSPEC_1 * specular_1 * LCOL_1 * LSMTH_1 ) * (toggleSpec ) ;
 	vec3 L2 = diffuse_2 + (LSPEC_2 * specular_2 * LCOL_2 * LSMTH_2) * (toggleSpec ) ;
 	vec3 L3 = diffuse_3 + (LSPEC_3 * specular_3 * LCOL_3 * LSMTH_3) * (toggleSpec ) ;
@@ -166,8 +166,8 @@ void fragment() {
 	vec3 normal = normalize(NORMAL);  	//	Normal:	No Normalizado
 	
     // 1. Transformar la normal local al espacio de vista (View Space)
-    vec3 view = cross(VIEW, normal);
-	//vec3 view = VIEW;					// 	View:	Ya viene normalizado
+    //vec3 view = cross(VIEW, normal);
+	vec3 view = VIEW;					// 	View:	Ya viene normalizado
 	
 	// MENU SWITCH
 	switch(lighting){
