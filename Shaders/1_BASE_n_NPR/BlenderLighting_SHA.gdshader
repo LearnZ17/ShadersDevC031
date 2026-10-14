@@ -93,7 +93,7 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	
 	// ROTATION MATRIX
 	float _cos = cos (angleLight * PI);
-	float _sin = sin (angleLight * PI);
+	float _sin = sin (-angleLight * PI);
 	
 	// (L) + ROTATION MATRIX
 	LDIR_1 = vec3(	LDIR_1.x * _cos - LDIR_1.z * _sin, 	
@@ -114,48 +114,48 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	
 	vec3 N = normal;				//	Normal:	No normalised
 	vec3 V = view;					// 	View:	Already normalised
-	float GlossSharp = 64.0;		// Specular >> Bright Size >> X^2
+	float GlossSharp = 16.0;		// Specular >> Bright Size >> X^2
 	
 	// COMPONENTS DIFFUSE | AMBIENT
-	vec3 kD = color * 0.5;
-	float kA = 0.15 ;
+	vec3 kD = 			color * 0.85;
+	float kA = 			0.1;
 	
 	// WHITE LIGHT
-	vec3 specColor1 = vec3(.66, .66,.66);
-	float dotNL_1 = max(dot(N, normalize(LDIR_1)), 0.0);
-	vec3 H_1 = normalize(LDIR_1 + V);
-	vec3 diffuse_1 = kD * LCOL_1 * dotNL_1;
-	vec3 specular_1 = pow(max(vec3(0.0), dot(N, H_1)), vec3(GlossSharp)) * LSMTH_1;
+	vec3 LSPEC_1 = 		normalize(vec3(.66, .66,.66));
+	float dotNL_1 = 	max(dot(N, normalize(LDIR_1)), 0.0);
+	vec3 H_1 = 			normalize(LDIR_1 + V);
+	vec3 diffuse_1 = 	kD * LCOL_1 * dotNL_1;
+	float specular_1 =	pow(max( dot(N, H_1), 0.0), GlossSharp ) ;
 	
 	// GREEN LIGHT
-	vec3 specColor2 = vec3(.03, .06,.63);
-	float dotNL_2 = max(dot(N, normalize(LDIR_2)), 0.0);
-	vec3 H_2 = normalize(LDIR_2 + V);
-	vec3 diffuse_2 = kD * LCOL_2 * dotNL_2;
-	vec3 specular_2 = pow(max(vec3(0.0), dot(N, H_2)), vec3(GlossSharp)) * LSMTH_2;
+	vec3 LSPEC_2 = 		normalize ( vec3(.03, .06,.63));
+	float dotNL_2 = 	max(dot(N, normalize(LDIR_2)), 0.0);
+	vec3 H_2 = 			normalize(LDIR_2 + V);
+	vec3 diffuse_2 = 	kD * LCOL_2 * dotNL_2;
+	float specular_2 =		pow(max(dot(N, H_2), 0.0),  GlossSharp  ) ;
 	
 	// PURPLE LIGHT
-	vec3 specColor3 = vec3(.69, .46,.46);
-	float dotNL_3 = max(dot(N, normalize(LDIR_3)), 0.0);
-	vec3 H_3 = normalize(LDIR_3 + V);
-	vec3 diffuse_3 = kD * LCOL_3 * dotNL_3;
-	vec3 specular_3 = pow(max(vec3(0.0), dot(N, H_3)), vec3(GlossSharp)) * LSMTH_3;
+	vec3 LSPEC_3 = 		normalize(vec3(.69, .46,.46));
+	float dotNL_3 = 	max(dot(N, normalize(LDIR_3)), 0.0);
+	vec3 H_3 = 			normalize(LDIR_3 + V);
+	vec3 diffuse_3 = 	kD * LCOL_3 * dotNL_3;
+	float specular_3 = 	pow(max( dot(N, H_3), 0.0),  GlossSharp ) ;
 	
 	// WHITE LIGHT
-	vec3 specColor4 = vec3(.02, .02,.02);
-	float dotNL_4 = max(dot(N, normalize(LDIR_4)), 0.0);
-	vec3 H_4 = normalize(LDIR_4 + V);
-	vec3 diffuse_4 = kD * LCOL_4 * dotNL_4;
-	vec3 specular_4 = pow(max(vec3(0.0), dot(N, H_4)), vec3(GlossSharp)) * LSMTH_4;
+	vec3 LSPEC_4 = 		normalize(vec3(.02, .02,.02));
+	float dotNL_4 = 	max(dot(N, normalize(LDIR_4)), 0.0);
+	vec3 H_4 = 			normalize(LDIR_4 + V);
+	vec3 diffuse_4 = 	kD * LCOL_4 * dotNL_4;
+	float specular_4 = 	pow(max( dot(N, H_4), 0.0), GlossSharp) ;
 	
 	// LIGHTS AND SPECULAR
-	float toggleSpec = float (addSpecular) * 1.0 ;
-	vec3 L1 = diffuse_1 +  (specular_1 * LCOL_1 ) * (toggleSpec);
-	vec3 L2 = diffuse_2 +  (specular_2 * LCOL_2 ) * (toggleSpec);
-	vec3 L3 = diffuse_3 +  (specular_3 * LCOL_3 ) * (toggleSpec );
-	vec3 L4 = diffuse_4 +  (specular_4 * LCOL_4 ) * (toggleSpec );
+	float toggleSpec = 	float (addSpecular) * 5.0 ;
+	vec3 L1 = diffuse_1 + (LSPEC_1 * specular_1 * LCOL_1 * LSMTH_1 ) * (toggleSpec ) ;
+	vec3 L2 = diffuse_2 + (LSPEC_2 * specular_2 * LCOL_2 * LSMTH_2) * (toggleSpec ) ;
+	vec3 L3 = diffuse_3 + (LSPEC_3 * specular_3 * LCOL_3 * LSMTH_3) * (toggleSpec ) ;
+	vec3 L4 = diffuse_4 + (LSPEC_4 * specular_4 * LCOL_4 * LSMTH_4) * (toggleSpec ) ;
 	
-	return (L1 + L2 + L3 + L4);
+	return ( L1 + L2 + L3 + L4 );
 }
 
 // FRAGMENT =====================================================
@@ -167,7 +167,6 @@ void fragment() {
 	
     // 1. Transformar la normal local al espacio de vista (View Space)
     vec3 view = cross(VIEW, normal);
-	
 	//vec3 view = VIEW;					// 	View:	Ya viene normalizado
 	
 	// MENU SWITCH
@@ -176,10 +175,10 @@ void fragment() {
 			finalColor = flatColorFunct();
 			break;
 		case 1: // MATCAP 
-			finalColor = MatCapFunct(normal);	
+			finalColor = MatCapFunct(normal);
 			break;
 		case 2: // STUDIO
-			finalColor = StudioFunct(normal, view);	
+			finalColor = StudioFunct(normal, view);
 			break;
 	}
 		
