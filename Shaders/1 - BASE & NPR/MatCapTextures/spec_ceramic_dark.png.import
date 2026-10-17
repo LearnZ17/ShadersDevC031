@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tmqwwqggq7fu"
-path.s3tc="res://.godot/imported/spec_ceramic_dark.png-2e5310f9719841b69c0c0fb3fce51e55.s3tc.ctex"
+path.s3tc="res://.godot/imported/spec_ceramic_dark.png-1b41395949e53e7fb1edb674c08cbc85.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Shaders/1_BASE_n_NPR/MatCapTextures/spec_ceramic_dark.png"
-dest_files=["res://.godot/imported/spec_ceramic_dark.png-2e5310f9719841b69c0c0fb3fce51e55.s3tc.ctex"]
+source_file="res://Shaders/1 - BASE & NPR/MatCapTextures/spec_ceramic_dark.png"
+dest_files=["res://.godot/imported/spec_ceramic_dark.png-1b41395949e53e7fb1edb674c08cbc85.s3tc.ctex"]
 
 [params]
 

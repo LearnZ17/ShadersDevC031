@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bdnpnjkhfgv78"
-path="res://.godot/imported/monk.glb-c04f7773f864dfde73c4e8343a14f5e2.scn"
+path="res://.godot/imported/monk.glb-180c648f77e3eb510f7d6b013812d750.scn"
 
 [deps]
 
-source_file="res://Assets/monk.glb"
-dest_files=["res://.godot/imported/monk.glb-c04f7773f864dfde73c4e8343a14f5e2.scn"]
+source_file="res://Shaders/1 - BASE & NPR/Assets/monk.glb"
+dest_files=["res://.godot/imported/monk.glb-180c648f77e3eb510f7d6b013812d750.scn"]
 
 [params]
 

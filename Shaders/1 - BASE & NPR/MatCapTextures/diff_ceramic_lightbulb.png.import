@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://di1juf42ijxfs"
-path.s3tc="res://.godot/imported/diff_ceramic_lightbulb.png-d186d38d8d01dcb81caaa0570b09a53b.s3tc.ctex"
+path.s3tc="res://.godot/imported/diff_ceramic_lightbulb.png-4d74cb150180219f197465fcbd02accb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Shaders/1_BASE_n_NPR/MatCapTextures/diff_ceramic_lightbulb.png"
-dest_files=["res://.godot/imported/diff_ceramic_lightbulb.png-d186d38d8d01dcb81caaa0570b09a53b.s3tc.ctex"]
+source_file="res://Shaders/1 - BASE & NPR/MatCapTextures/diff_ceramic_lightbulb.png"
+dest_files=["res://.godot/imported/diff_ceramic_lightbulb.png-4d74cb150180219f197465fcbd02accb.s3tc.ctex"]
 
 [params]
 

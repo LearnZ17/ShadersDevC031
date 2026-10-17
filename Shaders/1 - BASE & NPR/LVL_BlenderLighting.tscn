@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://p22qsnyctk42"]
 
-[ext_resource type="Environment" uid="uid://rfxd3p7hpwoa" path="res://Shaders/1_BASE_n_NPR/Env/sample_environment.tres" id="1_qbdiq"]
-[ext_resource type="PackedScene" uid="uid://bdnpnjkhfgv78" path="res://Assets/monk.glb" id="2_keg8b"]
-[ext_resource type="Shader" uid="uid://dc6yyel02xq8c" path="res://Shaders/1_BASE_n_NPR/BlenderLighting_SHA.gdshader" id="3_t1yfl"]
-[ext_resource type="Texture2D" uid="uid://di1juf42ijxfs" path="res://Shaders/1_BASE_n_NPR/MatCapTextures/diff_ceramic_lightbulb.png" id="4_qbdiq"]
-[ext_resource type="Texture2D" uid="uid://coxovql1raa3p" path="res://Shaders/1_BASE_n_NPR/MatCapTextures/spec_ceramic_lightbulb.png" id="5_keg8b"]
-[ext_resource type="Material" uid="uid://b3laeopx5urbi" path="res://Shaders/1_BASE_n_NPR/BlenderLighting_MAT.tres" id="6_ffv68"]
+[ext_resource type="Environment" uid="uid://rfxd3p7hpwoa" path="res://Shaders/1 - BASE & NPR/Env/sample_environment.tres" id="1_qbdiq"]
+[ext_resource type="PackedScene" uid="uid://bdnpnjkhfgv78" path="res://Shaders/1 - BASE & NPR/Assets/monk.glb" id="2_keg8b"]
+[ext_resource type="Shader" uid="uid://dc6yyel02xq8c" path="res://Shaders/1 - BASE & NPR/BlenderLighting_SHA.gdshader" id="3_t1yfl"]
+[ext_resource type="Texture2D" uid="uid://di1juf42ijxfs" path="res://Shaders/1 - BASE & NPR/MatCapTextures/diff_ceramic_lightbulb.png" id="4_qbdiq"]
+[ext_resource type="Texture2D" uid="uid://coxovql1raa3p" path="res://Shaders/1 - BASE & NPR/MatCapTextures/spec_ceramic_lightbulb.png" id="5_keg8b"]
+[ext_resource type="Material" uid="uid://b3laeopx5urbi" path="res://Shaders/1 - BASE & NPR/BlenderLighting_MAT.tres" id="6_ffv68"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbdiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2x4sj"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_t1yfl")
@@ -16,7 +16,7 @@ shader_parameter/matcapSpecular = ExtResource("5_keg8b")
 shader_parameter/lighting = 2
 shader_parameter/color = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = true
-shader_parameter/angleLight = 0.10000001639131995
+shader_parameter/angleLight = 0.10000001639131996
 
 [node name="Node3D" type="Node3D" unique_id=305063219]
 
@@ -27,7 +27,7 @@ environment = ExtResource("1_qbdiq")
 
 [node name="Monk" parent="monk" index="0" unique_id=369908100]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11566863, 0.06769973, 0.017592192)
-surface_material_override/0 = SubResource("ShaderMaterial_qbdiq")
+surface_material_override/0 = SubResource("ShaderMaterial_2x4sj")
 
 [node name="Sphere3D" type="CSGSphere3D" parent="." unique_id=279105648]
 transform = Transform3D(0.3704304, 0, 0, 0, 0.3704304, 0, 0, 0, 0.3704304, 0.5532718, 1.1948856, -0.12422085)
