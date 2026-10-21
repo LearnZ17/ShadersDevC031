@@ -24,6 +24,7 @@ window/stretch/aspect="expand"
 folder_colors={
 "res://Shaders/": "green",
 "res://Shaders/1 - BASE & NPR/Assets/": "red",
+"res://Shaders/2 - TOON - NPR/Assets/": "red",
 "res://Shaders/3 - PBR/Assets/": "red"
 }
 

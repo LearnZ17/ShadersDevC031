@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c1nydlc3e48dt"]
+
+[ext_resource type="PackedScene" uid="uid://bvx1skvnpvvxe" path="res://Shaders/2 - TOON - NPR/Assets/practice033_ZeldaModel.glb" id="1_2f7ii"]
+
+[node name="Node3D" type="Node3D" unique_id=2057209731]
+
+[node name="practice033_ZeldaModel" parent="." unique_id=1636748909 instance=ExtResource("1_2f7ii")]
