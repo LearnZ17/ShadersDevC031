@@ -150,10 +150,10 @@ vec3 StudioFunct(vec3 normal, vec3 view){
 	
 	// LIGHTS AND SPECULAR
 	float toggleSpec = 	float (addSpecular) * 3.0 ;
-	vec3 L1 = diffuse_1 + (LSPEC_1 * specular_1 * LCOL_1 * LSMTH_1 ) * (toggleSpec ) ;
-	vec3 L2 = diffuse_2 + (LSPEC_2 * specular_2 * LCOL_2 * LSMTH_2) * (toggleSpec ) ;
-	vec3 L3 = diffuse_3 + (LSPEC_3 * specular_3 * LCOL_3 * LSMTH_3) * (toggleSpec ) ;
-	vec3 L4 = diffuse_4 + (LSPEC_4 * specular_4 * LCOL_4 * LSMTH_4) * (toggleSpec ) ;
+	vec3 L1 = diffuse_1 + (LSPEC_1 * (specular_1 * LCOL_1) * LSMTH_1) * (toggleSpec ) ;
+	vec3 L2 = diffuse_2 + (LSPEC_2 * (specular_2 * LCOL_2) * LSMTH_2) * (toggleSpec ) ;
+	vec3 L3 = diffuse_3 + (LSPEC_3 * (specular_3 * LCOL_3) * LSMTH_3) * (toggleSpec ) ;
+	vec3 L4 = diffuse_4 + (LSPEC_4 * (specular_4 * LCOL_4) * LSMTH_4) * (toggleSpec ) ;
 	
 	return ( L1 + L2 + L3 + L4 );
 }

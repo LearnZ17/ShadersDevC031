@@ -1,0 +1,39 @@
+// -------- COMPONENTES DEL BRDF DE COOK-TORRANCE (PBR) --------
+
+// 1. Distribución (D) » Brillo: Calculo en Point/Directional Lights.
+float D_GGX(float dotNH, float roughness) {
+	float a = roughness * roughness;
+	float a2 = max(a * a, 0.0001);
+	float dotNHv2 = dotNH * dotNH;
+	float denom = (dotNHv2 * (a2 - 1.0) + 1.0);
+	return a2 / (PI * denom * denom);
+}
+
+// 2. Geometría (G) » Micro-sombras perdida: Calculo en Point/Directional Lights.
+	float G_SchlickGGX(float dotNV, float roughness) {
+	float r = (roughness + 1.0);
+	float k = (r * r) / 8.0;
+	return dotNV / (dotNV * (1.0 - k) + k);
+}
+float G_Smith(float dotNV, float dotNL, float roughness) {
+	return G_SchlickGGX(dotNV, roughness) * G_SchlickGGX(dotNL, roughness);
+}
+
+// 3. Fresnel (F): La cantidad de brillo según el ángulo de visión.
+
+//a. F-Standard: Materiales Pulidos » Metales o Espejos.
+vec3 F_Schlick(float cosTheta, vec3 F0) {
+	return F0 + (1.0 - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+}
+// b. F-Físico: Materiales con rugosidad » madera, piedra, etc.
+vec3 F_SchlickRoughness(float cosTheta, vec3 F0, float roughness) {
+	return F0 + (max(vec3(1.0 - roughness), F0) - F0) * pow(clamp(1.0 - cosTheta, 0.0, 1.0), 5.0);
+}
+
+// ------------ COORDENADAS DE UVs A POLARES ------------
+vec2 equirect_to_polar(vec3 dir) {
+	vec3 d = normalize(dir);
+	float phi = acos(clamp(d.y, -1.0, 1.0));
+	float theta = atan(d.z, d.x) + PI;
+	return vec2(theta / (2.0 * PI), phi / PI);
+}

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cr8p7r0orxyt0"]
+
+[ext_resource type="Shader" uid="uid://cmrrodoo4yllh" path="res://Shaders/3 - PBR/PBR_SHA.gdshader" id="1_lm14f"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lm14f")

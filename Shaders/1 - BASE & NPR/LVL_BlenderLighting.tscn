@@ -25,7 +25,7 @@ environment = ExtResource("1_qbdiq")
 
 [node name="monk" parent="." unique_id=529007663 instance=ExtResource("2_keg8b")]
 
-[node name="Monk" parent="monk" index="0" unique_id=369908100]
+[node name="Monk" parent="monk" index="0" unique_id=1727609143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11566863, 0.06769973, 0.017592192)
 surface_material_override/0 = SubResource("ShaderMaterial_2x4sj")
 
