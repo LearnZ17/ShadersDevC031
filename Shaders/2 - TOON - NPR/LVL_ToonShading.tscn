@@ -1,7 +1,38 @@
 [gd_scene format=3 uid="uid://c1nydlc3e48dt"]
 
 [ext_resource type="PackedScene" uid="uid://bvx1skvnpvvxe" path="res://Shaders/2 - TOON - NPR/Assets/practice033_ZeldaModel.glb" id="1_2f7ii"]
+[ext_resource type="Material" uid="uid://i4uv3wwucyu2" path="res://Shaders/2 - TOON - NPR/Assets/Materials/Body_MAT.tres" id="2_cxndl"]
+[ext_resource type="Material" uid="uid://bcw238afw86ri" path="res://Shaders/2 - TOON - NPR/Assets/Materials/Coat_MAT.tres" id="3_jeq8x"]
+[ext_resource type="Material" uid="uid://be4punewasfnw" path="res://Shaders/2 - TOON - NPR/Assets/Materials/LEye_MAT.tres" id="4_p3p3g"]
+[ext_resource type="Material" uid="uid://coipvkco0466t" path="res://Shaders/2 - TOON - NPR/Assets/Materials/REye_MAT.tres" id="5_inwer"]
+[ext_resource type="Material" uid="uid://s7q55knpoglc" path="res://Shaders/2 - TOON - NPR/Assets/Materials/Hair_MAT.tres" id="6_xliio"]
+[ext_resource type="Material" uid="uid://by4caqy4tb3m3" path="res://Shaders/2 - TOON - NPR/Assets/Materials/ToonShadingTest_MAT.tres" id="7_7nxsx"]
 
 [node name="Node3D" type="Node3D" unique_id=2057209731]
 
-[node name="practice033_ZeldaModel" parent="." unique_id=1636748909 instance=ExtResource("1_2f7ii")]
+[node name="ZeldaMyLove" parent="." unique_id=1636748909 instance=ExtResource("1_2f7ii")]
+
+[node name="MeshGroup" parent="ZeldaMyLove" index="0" unique_id=1558756308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046928406, -0.13566488, 0.09612611)
+surface_material_override/0 = ExtResource("2_cxndl")
+surface_material_override/1 = ExtResource("3_jeq8x")
+surface_material_override/2 = ExtResource("4_p3p3g")
+surface_material_override/3 = ExtResource("5_inwer")
+surface_material_override/4 = ExtResource("6_xliio")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2088391843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5031922, 1.5526755, -0.017222136)
+radius = 0.25
+radial_segments = 15
+rings = 15
+material = ExtResource("7_7nxsx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1220866538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9684499, 1.6859002, 0.4056598)
+light_color = Color(0.75494814, 0, 0.35674453, 1)
+sky_mode = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=215865347]
+transform = Transform3D(2.4976912, 0, 0, 0, 2.4976912, 0, 0, 0, 2.4976912, 0.22249734, -1.4250668, -0.11449993)
+
+[editable path="ZeldaMyLove"]
