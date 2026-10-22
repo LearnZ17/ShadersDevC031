@@ -13,7 +13,7 @@
 [node name="ZeldaMyLove" parent="." unique_id=1636748909 instance=ExtResource("1_2f7ii")]
 
 [node name="MeshGroup" parent="ZeldaMyLove" index="0" unique_id=1558756308]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.046928406, -0.13566488, 0.09612611)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.032165647, -0.16118723, 0.09645882)
 surface_material_override/0 = ExtResource("2_cxndl")
 surface_material_override/1 = ExtResource("3_jeq8x")
 surface_material_override/2 = ExtResource("4_p3p3g")
@@ -21,7 +21,7 @@ surface_material_override/3 = ExtResource("5_inwer")
 surface_material_override/4 = ExtResource("6_xliio")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2088391843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5031922, 1.5526755, -0.017222136)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5031922, 1.5526755, 0.20418337)
 radius = 0.25
 radial_segments = 15
 rings = 15
