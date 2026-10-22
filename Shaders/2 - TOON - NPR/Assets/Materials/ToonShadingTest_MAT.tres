@@ -8,4 +8,3 @@ shader = ExtResource("1_lqyv3")
 shader_parameter/ambientColor = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = true
 shader_parameter/addFresnel = true
-shader_parameter/angleLight = 0.0
