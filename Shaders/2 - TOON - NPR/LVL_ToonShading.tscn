@@ -33,6 +33,6 @@ light_color = Color(0.75494814, 0, 0.35674453, 1)
 sky_mode = 1
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=215865347]
-transform = Transform3D(2.4976912, 0, 0, 0, 2.4976912, 0, 0, 0, 2.4976912, 0.22249734, -1.4250668, -0.11449993)
+transform = Transform3D(2.4976912, 0, 0, 0, 2.4976912, 0, 0, 0, 2.4976912, 0.058553576, -1.4250668, 0.03671521)
 
 [editable path="ZeldaMyLove"]
