@@ -2,12 +2,14 @@ shader_type spatial;
 render_mode diffuse_lambert, ambient_light_disabled;
 
 group_uniforms UVTextures;
-		uniform bool useTexture = true;
+		// Base Color
+		uniform vec4 baseColor : source_color = vec4 (1.0);
+		
 		uniform sampler2D albedoText: source_color, hint_default_white;
+		uniform bool useTexture = true;
 		
 group_uniforms Properties;
-		// Base Color
-		uniform vec3 ambientColor : source_color = vec3 (1.0); 
+		uniform vec4 ambientColor : source_color = vec4 (1.0); 
 		// Specular
 		uniform bool addSpecular = true;
 		// Specular >> Bright Size >> X^2
@@ -20,15 +22,14 @@ varying vec3 view_dir;
 void fragment() {
 	// Called for every pixel the material is visible on.
 	
-	vec3 colorAlbedo;
+	vec4 colorAlbedo;
 	if ( !useTexture ) 
-		colorAlbedo = vec3(0.0, 0.5,1.0);
+		colorAlbedo = baseColor;
 	else 
-		colorAlbedo = texture(albedoText, UV ).rgb;
+		colorAlbedo = texture(albedoText, UV );
 	
 	
-	ALBEDO  =  colorAlbedo;
-	EMISSION =  colorAlbedo * vec3 (0.05, 0.08, 0.12);
+	ALBEDO  =  colorAlbedo.rgb;
 	view_dir = normalize(-VERTEX);
 }
 
@@ -41,7 +42,7 @@ void light() {
 	vec3 V = normalize(view_dir);					// 	View:	Already normalised
 	
 	// COMPONENTS DIFFUSE | AMBIENT
-	vec3  kD = 			ambientColor * 0.25;
+	vec3  kD = 			ambientColor.rgb * 0.25;
 	float kA = 			0.01;
 	float kS = 			0.2;
 	
@@ -61,7 +62,7 @@ void light() {
 	// LIGHTS + SPECULAR
 	float toggleSpec = 	float (addSpecular) ;
 	vec3 totalSpec = (kS *  LCOL * maskSpec * toggleSpec);
-	vec3 L = diffuse + totalSpec;
+	vec3 L = diffuse;
 	
 	float dotVN = max(dot(V, N), 0.0);
 	float invertVN = 1.0 - dotVN;
@@ -69,5 +70,7 @@ void light() {
 	float maskFres = smoothstep(0.01, 1.0, fresnel);
 	float totalFres =  pow(maskFres, 10.0);
 	
-	DIFFUSE_LIGHT += (L + (vec3(totalFres) * LCOL) ) ;
+	DIFFUSE_LIGHT = (L )  + vec3(totalFres) * LCOL;
+	SPECULAR_LIGHT = totalSpec;
+	
 }
