@@ -5,9 +5,12 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_lqyv3")
-shader_parameter/baseColor = Color(1.347661e-06, 0.66252685, 0.7504646, 1)
+shader_parameter/baseColor = Color(4.3317677e-06, 0.6214124, 0.6891272, 1)
 shader_parameter/useTexture = false
+shader_parameter/shadeOpacity = 0.6910000328225
 shader_parameter/ambientColor = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = true
-shader_parameter/glossSharp = 29.97200137617
+shader_parameter/glossSharp = 135.99200641212
 shader_parameter/addFresnel = true
+shader_parameter/rimIntensity = 4.7670001789325
+shader_parameter/rimLightColor = Color(0.9084362, 0.8298479, 0.8863938, 1)

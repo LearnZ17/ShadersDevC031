@@ -6,9 +6,13 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_gyjf1")
-shader_parameter/useTexture = true
+shader_parameter/baseColor = Color(1, 1, 1, 1)
 shader_parameter/albedoText = ExtResource("2_xjjq6")
-shader_parameter/ambientColor = Color(1, 1, 1, 1)
+shader_parameter/useTexture = true
+shader_parameter/shadeOpacity = 1.0
+shader_parameter/ambientColor = Color(0.90664536, 0.9400114, 0.9651975, 1)
 shader_parameter/addSpecular = true
-shader_parameter/glossSharp = 223.9550105903625
+shader_parameter/glossSharp = 208.586009860335
 shader_parameter/addFresnel = true
+shader_parameter/rimIntensity = 1.4390000208525
+shader_parameter/rimLightColor = Color(1, 1, 1, 1)
