@@ -10,6 +10,12 @@
 
 [node name="Node3D" type="Node3D" unique_id=2057209731]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533197430]
+transform = Transform3D(0.1665993, 0.87304246, 0.45830324, -0.6563765, -0.24865644, 0.71227837, 0.7358091, -0.41948444, 0.5316184, 0.6498114, 2.7823331, 1.18819)
+light_energy = 0.7
+light_volumetric_fog_energy = 1.8
+shadow_enabled = true
+
 [node name="ZeldaMyLove" parent="." unique_id=1636748909 instance=ExtResource("1_2f7ii")]
 
 [node name="MeshGroup" parent="ZeldaMyLove" index="0" unique_id=1558756308]
@@ -21,7 +27,7 @@ surface_material_override/3 = ExtResource("5_inwer")
 surface_material_override/4 = ExtResource("6_xliio")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2088391843]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5348408, 1.5526755, 0.20418337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5348408, 1.4266307, -0.015981883)
 radius = 0.25
 radial_segments = 15
 rings = 15
@@ -30,8 +36,5 @@ material = ExtResource("7_7nxsx")
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=215865347]
 transform = Transform3D(2.4976912, 0, 0, 0, 2.4976912, 0, 0, 0, 2.4976912, 0.058553576, -1.4250668, 0.03671521)
 material = ExtResource("7_7nxsx")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533197430]
-transform = Transform3D(0.9990937, 0.024988873, 0.034457423, -0.042488564, 0.63391197, 0.7722375, -0.0025456345, -0.7730016, 0.63439924, 0.16087246, 1.4315932, 1.18819)
 
 [editable path="ZeldaMyLove"]

@@ -6,6 +6,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_gyjf1")
+shader_parameter/useTexture = true
 shader_parameter/albedoText = ExtResource("2_xjjq6")
 shader_parameter/ambientColor = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = true
