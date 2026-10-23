@@ -10,8 +10,6 @@ group_uniforms Properties.UVTextures;
 		uniform bool useTexture = true;
 group_uniforms Properties.Diffuse;
 		uniform float shadeOpacity : hint_range (0.0, 1.0) = 0.5; 
-		// Ambient
-		uniform vec4 ambientColor : source_color = vec4 (1.0); 
 group_uniforms Properties.Specular;
 		// Specular
 		uniform bool addSpecular = true;
@@ -20,10 +18,8 @@ group_uniforms Properties.Specular;
 group_uniforms Properties.RimLight;
 		// Fresnel
 		uniform bool addFresnel = true;
-		uniform float rimIntensity : hint_range (1.0, 5.0) = 5.0; 
+		uniform float rimEdge : hint_range (0.01, 0.9) = 0.5; 
 		uniform vec4 rimLightColor : source_color = vec4 (1.0); 
-
-varying vec3 view_dir;
 
 void fragment() {
 	// Called for every pixel the material is visible on.
@@ -35,7 +31,6 @@ void fragment() {
 		colorAlbedo = texture(albedoText, UV ) * baseColor;
 
 	ALBEDO  =  colorAlbedo.rgb;
-	view_dir = normalize(-VERTEX);
 }
 
 void light() {	
@@ -44,12 +39,12 @@ void light() {
 	vec3 LDIR = normalize(LIGHT);
 	vec3 LCOL = LIGHT_COLOR;
 	vec3 N = normalize(NORMAL);				//	Normal:	No normalised
-	vec3 V = normalize(view_dir);					// 	View:	Already normalised
+	vec3 V = normalize(VIEW);					// 	View:	Already normalised
 	
 	// COMPONENTS DIFFUSE | AMBIENT
-	vec3  kD = 			ambientColor.rgb * 0.25;
-	float kA = 			0.01;
-	float kS = 			1.0;
+	float kD = 		0.30;
+	float kA = 		0.01;
+	float kS = 		1.0;
 	
 	// DIFFUSE | LAMBERT
 	//vec3 LSPEC = 		normalize(vec3(.66, .66,.66));
@@ -73,9 +68,8 @@ void light() {
 	float dotVN = max(dot(V, N), 0.0);
 	float invertVN = 1.0 - dotVN;
 	float fresnel = invertVN * float(addFresnel) * ATTENUATION ;
-	float maskFres = smoothstep(0.1, 1.0, fresnel);
-	float totalFres =  pow(maskFres, rimIntensity);
+	float maskFres = smoothstep(rimEdge, 0.8, fresnel);
 	
-	DIFFUSE_LIGHT = L + totalSpec + ( vec3(totalFres) * rimLightColor.rgb);
+	DIFFUSE_LIGHT = L + totalSpec + ( vec3(maskFres) * rimLightColor.rgb);
 	
 }

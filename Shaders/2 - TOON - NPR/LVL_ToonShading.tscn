@@ -11,11 +11,12 @@
 [node name="Node3D" type="Node3D" unique_id=2057209731]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533197430]
-transform = Transform3D(0.20196462, 0.9002747, 0.38563678, -0.7673346, -0.09923093, 0.6335224, 0.6086113, -0.42386156, 0.67077094, 0.17537177, 1.1660299, 0.3939373)
+transform = Transform3D(0.16739722, 0.92269963, 0.3472806, -0.7673347, -0.099230975, 0.6335226, 0.6190119, -0.3725304, 0.69140846, 0.17537177, 1.1660299, 0.3939373)
 
 [node name="ZeldaMyLove" parent="." unique_id=1636748909 instance=ExtResource("1_2f7ii")]
 
 [node name="MeshGroup" parent="ZeldaMyLove" index="0" unique_id=1558756308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024013191, -0.15156364, 0.030486107)
 surface_material_override/0 = ExtResource("2_cxndl")
 surface_material_override/1 = ExtResource("3_jeq8x")
 surface_material_override/2 = ExtResource("4_p3p3g")
@@ -25,8 +26,8 @@ surface_material_override/4 = ExtResource("6_xliio")
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2088391843]
 transform = Transform3D(0.6780046, 0, 0, 0, 0.6780046, 0, 0, 0, 0.6780046, 0.42058057, 1.3742254, -0.032834142)
 radius = 0.25
-radial_segments = 15
-rings = 15
+radial_segments = 30
+rings = 30
 material = ExtResource("7_7nxsx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=215865347]
