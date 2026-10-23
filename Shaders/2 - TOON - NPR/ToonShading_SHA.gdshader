@@ -10,6 +10,8 @@ group_uniforms Properties;
 		uniform vec3 ambientColor : source_color = vec3 (1.0); 
 		// Specular
 		uniform bool addSpecular = true;
+		// Specular >> Bright Size >> X^2
+		uniform float glossSharp : hint_range (1.0, 256.0) = 64.0; 
 		// Fresnel
 		uniform bool addFresnel = true;
 
@@ -19,13 +21,11 @@ void fragment() {
 	// Called for every pixel the material is visible on.
 	
 	vec3 colorAlbedo;
-	if ( !useTexture ) {
+	if ( !useTexture ) 
 		colorAlbedo = vec3(0.0, 0.5,1.0);
-	} 
 	else 
-	{
 		colorAlbedo = texture(albedoText, UV ).rgb;
-	}
+	
 	
 	ALBEDO  =  colorAlbedo;
 	EMISSION =  colorAlbedo * vec3 (0.05, 0.08, 0.12);
@@ -38,13 +38,12 @@ void light() {
 	vec3 LDIR = normalize(LIGHT);
 	vec3 LCOL = LIGHT_COLOR;
 	vec3 N = normalize(NORMAL);				//	Normal:	No normalised
-	vec3 V = normalize(VIEW);					// 	View:	Already normalised
-	float GlossSharp = 64.0;		// Specular >> Bright Size >> X^2
+	vec3 V = normalize(view_dir);					// 	View:	Already normalised
 	
 	// COMPONENTS DIFFUSE | AMBIENT
-	vec3  kD = 			ambientColor * 0.5;
+	vec3  kD = 			ambientColor * 0.25;
 	float kA = 			0.01;
-	float kS = 			1.0;
+	float kS = 			0.2;
 	
 	// DIFFUSE | LAMBERT
 	//vec3 LSPEC = 		normalize(vec3(.66, .66,.66));
@@ -56,7 +55,7 @@ void light() {
 	
 	// SPECULAR
 	vec3 H = 			normalize(LDIR + V);
-	float specular =	pow(max( dot(N, H), 0.0), GlossSharp ) ;
+	float specular =	pow(max( dot(N, H), 0.0), glossSharp ) ;
 	float maskSpec = 	smoothstep(0.01, 0.5, specular);
 	
 	// LIGHTS + SPECULAR
@@ -64,5 +63,11 @@ void light() {
 	vec3 totalSpec = (kS *  LCOL * maskSpec * toggleSpec);
 	vec3 L = diffuse + totalSpec;
 	
-	DIFFUSE_LIGHT += L * ATTENUATION;
+	float dotVN = max(dot(V, N), 0.0);
+	float invertVN = 1.0 - dotVN;
+	float fresnel = invertVN * float(addFresnel) * ATTENUATION ;
+	float maskFres = smoothstep(0.01, 1.0, fresnel);
+	float totalFres =  pow(maskFres, 10.0);
+	
+	DIFFUSE_LIGHT += (L + (vec3(totalFres) * LCOL) ) ;
 }

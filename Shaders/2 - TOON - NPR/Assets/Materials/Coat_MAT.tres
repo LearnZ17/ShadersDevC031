@@ -6,7 +6,9 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_aioo0")
+shader_parameter/useTexture = true
 shader_parameter/albedoText = ExtResource("2_r2kj3")
 shader_parameter/ambientColor = Color(1, 1, 1, 1)
 shader_parameter/addSpecular = false
+shader_parameter/glossSharp = 64.0
 shader_parameter/addFresnel = true
