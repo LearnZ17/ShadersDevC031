@@ -1,5 +1,4 @@
 shader_type spatial;
-render_mode diffuse_lambert, ambient_light_disabled;
 
 group_uniforms Properties;
 		// Base Color
@@ -28,18 +27,18 @@ void fragment() {
 	if ( !useTexture ) 
 		colorAlbedo = baseColor;
 	else 
-		colorAlbedo = texture(albedoText, UV ) * baseColor;
+		colorAlbedo = pow(texture(albedoText, UV), vec4(2.2)) * baseColor;
 
 	ALBEDO  =  colorAlbedo.rgb;
 }
 
 void light() {	
 //	// Called for every pixel for every light affecting the material.
-	// BASIC VARIABLES
-	vec3 LDIR = normalize(LIGHT);
-	vec3 LCOL = LIGHT_COLOR;
+	// BASIC VARIABLES (MAIN 4 VECTORS)
+	vec3 L = normalize(LIGHT);
 	vec3 N = normalize(NORMAL);				//	Normal:	No normalised
 	vec3 V = normalize(VIEW);					// 	View:	Already normalised
+	vec3 H = normalize(L + V);
 	
 	// COMPONENTS DIFFUSE | AMBIENT
 	float kD = 		0.30;
@@ -47,29 +46,26 @@ void light() {
 	float kS = 		1.0;
 	
 	// DIFFUSE | LAMBERT
-	//vec3 LSPEC = 		normalize(vec3(.66, .66,.66));
-	float dotNL = 	max(dot(N, normalize(LDIR)),0.0);
+	float dotNL = 	max(0.0, dot(N, L));
 	// TOON
-	float maskDiff = smoothstep(0.0, 0.01, dotNL); // <-- TOON
+	float maskDiff = smoothstep(0.0, 0.01, dotNL);
 	// mix (a, b, mask) , a = 0.0 >> 1.0, b = colorLight
-	vec3 mixDiff = mix(vec3( shadeOpacity ), LCOL, vec3(maskDiff));
-	vec3 diffuse = 	(kD * LCOL * mixDiff) * ALBEDO * ATTENUATION;
+	vec3 mixDiff = mix(vec3( shadeOpacity ), LIGHT_COLOR, vec3(maskDiff));
+	vec3 diffuse = 	(kD * mixDiff) * ALBEDO * ATTENUATION;
 	
 	// SPECULAR
-	vec3 H = 			normalize(LDIR + V);
 	float specular =	pow(max( dot(N, H), 0.0), glossSharp ) ;
 	float maskSpec = 	smoothstep(0.01, 0.5, specular);
 	
 	// LIGHTS + SPECULAR
 	float toggleSpec = 	float (addSpecular) ;
-	vec3 totalSpec = kS *  LCOL * ALBEDO * maskSpec * toggleSpec;
-	vec3 L = diffuse;
+	vec3 totalSpec = kS * LIGHT_COLOR * ALBEDO * maskSpec * toggleSpec;
 	
 	float dotVN = max(dot(V, N), 0.0);
 	float invertVN = 1.0 - dotVN;
-	float fresnel = invertVN * float(addFresnel) * ATTENUATION ;
-	float maskFres = smoothstep(rimEdge, 0.8, fresnel);
+	float fresnel = invertVN * float(addFresnel) * ATTENUATION * maskDiff;
+	float maskFres = smoothstep(rimEdge, 0.8, fresnel) * 10.0;
 	
-	DIFFUSE_LIGHT = L + totalSpec + ( vec3(maskFres) * rimLightColor.rgb);
+	DIFFUSE_LIGHT = diffuse + totalSpec + ( vec3(maskFres) * rimLightColor.rgb);
 	
 }

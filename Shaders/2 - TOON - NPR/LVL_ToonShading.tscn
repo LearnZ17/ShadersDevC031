@@ -8,15 +8,26 @@
 [ext_resource type="Material" uid="uid://s7q55knpoglc" path="res://Shaders/2 - TOON - NPR/Assets/Materials/Hair_MAT.tres" id="6_xliio"]
 [ext_resource type="Material" uid="uid://by4caqy4tb3m3" path="res://Shaders/2 - TOON - NPR/Assets/Materials/ToonShadingTest_MAT.tres" id="7_7nxsx"]
 
+[sub_resource type="Sky" id="Sky_qwqyf"]
+
+[sub_resource type="Environment" id="Environment_4kxuq"]
+background_mode = 2
+sky = SubResource("Sky_qwqyf")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
 [node name="Node3D" type="Node3D" unique_id=2057209731]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1804184771]
+environment = SubResource("Environment_4kxuq")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=533197430]
-transform = Transform3D(0.16739722, 0.92269963, 0.3472806, -0.7673347, -0.099230975, 0.6335226, 0.6190119, -0.3725304, 0.69140846, 0.17537177, 1.1660299, 0.3939373)
+transform = Transform3D(0.25975716, 0.85516703, 0.44857067, -0.7673347, -0.099230856, 0.6335225, 0.5862795, -0.5087658, 0.6304235, 0.17537177, 1.1660299, 0.3939373)
 
 [node name="ZeldaMyLove" parent="." unique_id=1636748909 instance=ExtResource("1_2f7ii")]
 
 [node name="MeshGroup" parent="ZeldaMyLove" index="0" unique_id=1558756308]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024013191, -0.15156364, 0.030486107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17, 0, 0)
 surface_material_override/0 = ExtResource("2_cxndl")
 surface_material_override/1 = ExtResource("3_jeq8x")
 surface_material_override/2 = ExtResource("4_p3p3g")
@@ -24,7 +35,7 @@ surface_material_override/3 = ExtResource("5_inwer")
 surface_material_override/4 = ExtResource("6_xliio")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=2088391843]
-transform = Transform3D(0.6780046, 0, 0, 0, 0.6780046, 0, 0, 0, 0.6780046, 0.42058057, 1.3742254, -0.032834142)
+transform = Transform3D(0.6780046, 0, 0, 0, 0.6780046, 0, 0, 0, 0.6780046, 0.54884255, 1.4041013, -0.03887576)
 radius = 0.25
 radial_segments = 30
 rings = 30
