@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bk80qgi1qjqtd"]
+
+[ext_resource type="PackedScene" uid="uid://cq2rxpw4sy82c" path="res://Shaders/3 - PBR/Assets/Msh_WarHorn.glb" id="1_d8ghb"]
+[ext_resource type="Texture2D" uid="uid://fxkcu2m78wlc" path="res://Shaders/3 - PBR/Assets/IBL_Forest.exr" id="1_vkd5b"]
+[ext_resource type="Material" uid="uid://cr8p7r0orxyt0" path="res://Shaders/3 - PBR/PBR_MAT.tres" id="2_7xerj"]
+[ext_resource type="Material" uid="uid://cnjqjm50bnmtg" path="res://Shaders/3 - PBR/GD_Mat.tres" id="3_bwar7"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4p81b"]
+panorama = ExtResource("1_vkd5b")
+
+[sub_resource type="Sky" id="Sky_klkj8"]
+sky_material = SubResource("PanoramaSkyMaterial_4p81b")
+
+[sub_resource type="Environment" id="Environment_mtsm2"]
+background_mode = 2
+sky = SubResource("Sky_klkj8")
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=449008555]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1875813726]
+environment = SubResource("Environment_mtsm2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1157164516]
+transform = Transform3D(-0.31495744, -0.5425704, -0.7787292, -0.9424359, 0.081684425, 0.324256, -0.11232169, 0.8360292, -0.53706497, -13.750982, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 5.0
+directional_shadow_pancake_size = 1.0
+
+[node name="Sketchfab_Scene" parent="." unique_id=378704218 instance=ExtResource("1_d8ghb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, -28.37855)
+
+[node name="Object_2" parent="Sketchfab_Scene/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(378704218, 494653531) index="0" unique_id=1092406353]
+material_override = ExtResource("3_bwar7")
+lod_bias = 2.033
+
+[node name="Sketchfab_Scene2" parent="." unique_id=2132084696 instance=ExtResource("1_d8ghb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, 22.686386)
+
+[node name="Object_2" parent="Sketchfab_Scene2/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(2132084696, 494653531) index="0" unique_id=1092406353]
+material_override = ExtResource("2_7xerj")
+material_overlay = ExtResource("2_7xerj")
+
+[editable path="Sketchfab_Scene"]
+[editable path="Sketchfab_Scene2"]
