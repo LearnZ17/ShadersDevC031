@@ -11,10 +11,10 @@
 render_priority = 0
 shader = ExtResource("1_lm14f")
 shader_parameter/albedoMap = ExtResource("2_mc7dy")
-shader_parameter/alphaThreshold = 0.5
+shader_parameter/alphaThreshold = 0.17999999597664
 shader_parameter/ormMap = ExtResource("6_6r01b")
 shader_parameter/normalMap = ExtResource("3_cvif7")
-shader_parameter/normalStrength = 1.0
+shader_parameter/normalStrength = 1.0999999754128
 shader_parameter/iblMap = ExtResource("3_ewh8f")
 shader_parameter/lutMap = ExtResource("4_iacfx")
-shader_parameter/iblStrenght = 0.5000000074506
+shader_parameter/iblStrenght = 1.5000000223518

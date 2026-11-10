@@ -22,7 +22,8 @@ glow_enabled = true
 environment = SubResource("Environment_mtsm2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1157164516]
-transform = Transform3D(-0.31495744, -0.5425704, -0.7787292, -0.9424359, 0.081684425, 0.324256, -0.11232169, 0.8360292, -0.53706497, -13.750982, 0, 0)
+transform = Transform3D(0.073819935, 0.3931978, -0.9164858, -0.9847382, -0.11650058, -0.12929942, -0.15761136, 0.9120434, 0.3785968, -36.786118, 14.523355, -15.4469795)
+light_energy = 0.832
 shadow_enabled = true
 directional_shadow_max_distance = 5.0
 directional_shadow_pancake_size = 1.0
@@ -31,6 +32,7 @@ directional_shadow_pancake_size = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, -28.37855)
 
 [node name="Object_2" parent="GODOT PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(378704218, 494653531) index="0" unique_id=1092406353]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.234377, 0)
 material_override = ExtResource("3_bwar7")
 lod_bias = 2.033
 
@@ -38,8 +40,8 @@ lod_bias = 2.033
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, 22.686386)
 
 [node name="Object_2" parent="CUSTOM PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(2132084696, 494653531) index="0" unique_id=1092406353]
+transform = Transform3D(1, 0.00018853719, -0.00017620015, -0.00018870323, 0.9999995, -0.0009408233, 0.00017602232, 0.0009408566, 0.9999995, 0, 23.64893, 0)
 material_override = ExtResource("2_7xerj")
-material_overlay = ExtResource("2_7xerj")
 
 [editable path="GODOT PBR"]
 [editable path="CUSTOM PBR"]
