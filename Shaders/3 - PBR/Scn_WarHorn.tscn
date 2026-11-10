@@ -27,19 +27,19 @@ shadow_enabled = true
 directional_shadow_max_distance = 5.0
 directional_shadow_pancake_size = 1.0
 
-[node name="Sketchfab_Scene" parent="." unique_id=378704218 instance=ExtResource("1_d8ghb")]
+[node name="GODOT PBR" parent="." unique_id=378704218 instance=ExtResource("1_d8ghb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, -28.37855)
 
-[node name="Object_2" parent="Sketchfab_Scene/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(378704218, 494653531) index="0" unique_id=1092406353]
+[node name="Object_2" parent="GODOT PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(378704218, 494653531) index="0" unique_id=1092406353]
 material_override = ExtResource("3_bwar7")
 lod_bias = 2.033
 
-[node name="Sketchfab_Scene2" parent="." unique_id=2132084696 instance=ExtResource("1_d8ghb")]
+[node name="CUSTOM PBR" parent="." unique_id=2132084696 instance=ExtResource("1_d8ghb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, 22.686386)
 
-[node name="Object_2" parent="Sketchfab_Scene2/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(2132084696, 494653531) index="0" unique_id=1092406353]
+[node name="Object_2" parent="CUSTOM PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(2132084696, 494653531) index="0" unique_id=1092406353]
 material_override = ExtResource("2_7xerj")
 material_overlay = ExtResource("2_7xerj")
 
-[editable path="Sketchfab_Scene"]
-[editable path="Sketchfab_Scene2"]
+[editable path="GODOT PBR"]
+[editable path="CUSTOM PBR"]

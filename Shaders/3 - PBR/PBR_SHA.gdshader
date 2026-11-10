@@ -1,5 +1,4 @@
 shader_type spatial;
-
 render_mode ambient_light_disabled, specular_disabled;
 
 // ===================================
@@ -8,7 +7,8 @@ render_mode ambient_light_disabled, specular_disabled;
 
 group_uniforms P_B_R;
 	uniform sampler2D albedoMap : filter_linear_mipmap;
-	uniform float alphaThreshold;
+	uniform float alphaThreshold : hint_range(0.0, 1.0, 0.1) = 0.5
+	;
 	uniform sampler2D ormMap : filter_linear_mipmap;
 	uniform sampler2D normalMap : filter_linear_mipmap;
 	uniform float normalStrength : hint_range(0.0, 1.0, 0.1) = 1.0;
@@ -16,7 +16,7 @@ group_uniforms P_B_R;
 group_uniforms I_B_L;
 	uniform sampler2D iblMap : filter_linear_mipmap;
 	uniform sampler2D lutMap;
-	uniform float iblStrenght : hint_range(0.0, 1.0, 0.1) = 1.0 ;
+	uniform float iblStrenght : hint_range(0.0, 1.0, 0.1) = 1.0 ; 
 
 // ========================================
 // AUX MATH FUNCTONS
@@ -53,8 +53,19 @@ void fragment() {
 	if (_albedoMap.a < alphaThreshold) { discard; }
 	
 	// =================================================
-	// NORMAL (Unpacked + TBN)
+	// NORMAL (Unpacked + TBN) - Normal | IMPORTS : Textures Normal Map -> w/Detect (Disable)
 	// ================================================= 
 	
+	vec3 normalUnpack = _normalMap * 2.0 - 1.0;
+	vec3 normalIntensity = mix(vec3(0.0, 0.0, 1.0), normalUnpack, normalStrength);
+
+	mat3 TBN = mat3(normalize(TANGENT), normalize(BINORMAL), normalize(NORMAL));
+	NORMAL = normalize(TBN * normalIntensity);
+	
+	
+	
+	
+	
+	ALBEDO = _albedoMap.rgb;
 	
 }
