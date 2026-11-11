@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bk80qgi1qjqtd"]
 
-[ext_resource type="PackedScene" uid="uid://cq2rxpw4sy82c" path="res://Shaders/3 - PBR/Assets/Msh_WarHorn.glb" id="1_d8ghb"]
-[ext_resource type="Texture2D" uid="uid://fxkcu2m78wlc" path="res://Shaders/3 - PBR/Assets/IBL_Forest.exr" id="1_vkd5b"]
-[ext_resource type="Material" uid="uid://cr8p7r0orxyt0" path="res://Shaders/3 - PBR/PBR_MAT.tres" id="2_7xerj"]
-[ext_resource type="Material" uid="uid://cnjqjm50bnmtg" path="res://Shaders/3 - PBR/GD_Mat.tres" id="3_bwar7"]
+[ext_resource type="Texture2D" uid="uid://fxkcu2m78wlc" path="res://Shaders/3 - PBR/Common/IBL_Forest.exr" id="1_m67am"]
+[ext_resource type="PackedScene" uid="uid://cq2rxpw4sy82c" path="res://Shaders/3 - PBR/WarHorn/Msh_WarHorn.glb" id="2_0yi13"]
+[ext_resource type="Material" uid="uid://cnjqjm50bnmtg" path="res://Shaders/3 - PBR/WarHorn/WarHorn_GD_Mat.tres" id="3_m67am"]
+[ext_resource type="Material" uid="uid://cr8p7r0orxyt0" path="res://Shaders/3 - PBR/WarHorn/Warhorn_PBR_MAT.tres" id="4_m67am"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4p81b"]
-panorama = ExtResource("1_vkd5b")
+panorama = ExtResource("1_m67am")
 
 [sub_resource type="Sky" id="Sky_klkj8"]
 sky_material = SubResource("PanoramaSkyMaterial_4p81b")
@@ -28,20 +28,20 @@ shadow_enabled = true
 directional_shadow_max_distance = 5.0
 directional_shadow_pancake_size = 1.0
 
-[node name="GODOT PBR" parent="." unique_id=378704218 instance=ExtResource("1_d8ghb")]
+[node name="GODOT PBR" parent="." unique_id=378704218 instance=ExtResource("2_0yi13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, -28.37855)
 
-[node name="Object_2" parent="GODOT PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(378704218, 494653531) index="0" unique_id=1092406353]
+[node name="Object_2" parent="GODOT PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(378704218, 1466164454) index="0" unique_id=86384638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.234377, 0)
-material_override = ExtResource("3_bwar7")
+material_override = ExtResource("3_m67am")
 lod_bias = 2.033
 
-[node name="CUSTOM PBR" parent="." unique_id=2132084696 instance=ExtResource("1_d8ghb")]
+[node name="CUSTOM PBR" parent="." unique_id=2132084696 instance=ExtResource("2_0yi13")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, 22.686386)
 
-[node name="Object_2" parent="CUSTOM PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(2132084696, 494653531) index="0" unique_id=1092406353]
+[node name="Object_2" parent="CUSTOM PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(2132084696, 1466164454) index="0" unique_id=86384638]
 transform = Transform3D(1, 0.00018853719, -0.00017620015, -0.00018870323, 0.9999995, -0.0009408233, 0.00017602232, 0.0009408566, 0.9999995, 0, 23.64893, 0)
-material_override = ExtResource("2_7xerj")
+material_override = ExtResource("4_m67am")
 
 [editable path="GODOT PBR"]
 [editable path="CUSTOM PBR"]

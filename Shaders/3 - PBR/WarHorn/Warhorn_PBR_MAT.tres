@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cr8p7r0orxyt0"]
+
+[ext_resource type="Shader" uid="uid://cmrrodoo4yllh" path="res://Shaders/3 - PBR/Common/PBR_SHA.gdshader" id="1_lm14f"]
+[ext_resource type="Texture2D" uid="uid://biljf45bb6lp1" path="res://Shaders/3 - PBR/WarHorn/Map_WarHorn_A.png" id="2_mc7dy"]
+[ext_resource type="Texture2D" uid="uid://dh2y5ievloeip" path="res://Shaders/3 - PBR/WarHorn/Map_WarHorn_N.png" id="3_cvif7"]
+[ext_resource type="Texture2D" uid="uid://fxkcu2m78wlc" path="res://Shaders/3 - PBR/Common/IBL_Forest.exr" id="3_ewh8f"]
+[ext_resource type="Texture2D" uid="uid://ccsnqoiijl0x1" path="res://Shaders/3 - PBR/Common/brdfLUT.png" id="4_iacfx"]
+[ext_resource type="Texture2D" uid="uid://oj4vyj80nwvv" path="res://Shaders/3 - PBR/WarHorn/Map_WarHorn_ORM.png" id="6_6r01b"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lm14f")
+shader_parameter/albedoMap = ExtResource("2_mc7dy")
+shader_parameter/alphaThreshold = 0.17999999597664
+shader_parameter/ormMap = ExtResource("6_6r01b")
+shader_parameter/normalMap = ExtResource("3_cvif7")
+shader_parameter/normalStrength = 1.0999999754128
+shader_parameter/iblMap = ExtResource("3_ewh8f")
+shader_parameter/lutMap = ExtResource("4_iacfx")
+shader_parameter/iblStrenght = 1.5000000223518

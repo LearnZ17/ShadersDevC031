@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccsnqoiijl0x1"
-path.s3tc="res://.godot/imported/brdfLUT.png-7bfec71a2de3c4a95a2235e83e745d8f.s3tc.ctex"
+uid="uid://fxkcu2m78wlc"
+path.bptc="res://.godot/imported/IBL_Forest.exr-6c2dc2daa211284d290cb9a6e71edb8b.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Shaders/3 - PBR/Assets/brdfLUT.png"
-dest_files=["res://.godot/imported/brdfLUT.png-7bfec71a2de3c4a95a2235e83e745d8f.s3tc.ctex"]
+source_file="res://Shaders/3 - PBR/Common/IBL_Forest.exr"
+dest_files=["res://.godot/imported/IBL_Forest.exr-6c2dc2daa211284d290cb9a6e71edb8b.bptc.ctex"]
 
 [params]
 

@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cnjqjm50bnmtg"]
 
-[ext_resource type="Texture2D" uid="uid://biljf45bb6lp1" path="res://Shaders/3 - PBR/Assets/Map_WarHorn_A.png" id="1_p1xp0"]
-[ext_resource type="Texture2D" uid="uid://oj4vyj80nwvv" path="res://Shaders/3 - PBR/Assets/Map_WarHorn_ORM.png" id="2_uv35l"]
-[ext_resource type="Texture2D" uid="uid://dh2y5ievloeip" path="res://Shaders/3 - PBR/Assets/Map_WarHorn_N.png" id="3_3vjos"]
+[ext_resource type="Texture2D" uid="uid://biljf45bb6lp1" path="res://Shaders/3 - PBR/WarHorn/Map_WarHorn_A.png" id="1_p1xp0"]
+[ext_resource type="Texture2D" uid="uid://oj4vyj80nwvv" path="res://Shaders/3 - PBR/WarHorn/Map_WarHorn_ORM.png" id="2_uv35l"]
+[ext_resource type="Texture2D" uid="uid://dh2y5ievloeip" path="res://Shaders/3 - PBR/WarHorn/Map_WarHorn_N.png" id="3_3vjos"]
 
 [resource]
 transparency = 2

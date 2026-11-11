@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cq2rxpw4sy82c"
-path="res://.godot/imported/Msh_WarHorn.glb-89557b0a13937d700b3406740570a6a9.scn"
+path="res://.godot/imported/Msh_WarHorn.glb-d8bfdb556345d5adf9fdb5d8cfaa6a06.scn"
 
 [deps]
 
-source_file="res://Shaders/3 - PBR/Assets/Msh_WarHorn.glb"
-dest_files=["res://.godot/imported/Msh_WarHorn.glb-89557b0a13937d700b3406740570a6a9.scn"]
+source_file="res://Shaders/3 - PBR/WarHorn/Msh_WarHorn.glb"
+dest_files=["res://.godot/imported/Msh_WarHorn.glb-d8bfdb556345d5adf9fdb5d8cfaa6a06.scn"]
 
 [params]
 
