@@ -16,6 +16,8 @@ background_mode = 2
 sky = SubResource("Sky_klkj8")
 glow_enabled = true
 
+[sub_resource type="SystemFont" id="SystemFont_qwqyf"]
+
 [node name="Node3D" type="Node3D" unique_id=449008555]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1875813726]
@@ -29,19 +31,33 @@ directional_shadow_max_distance = 5.0
 directional_shadow_pancake_size = 1.0
 
 [node name="GODOT PBR" parent="." unique_id=378704218 instance=ExtResource("2_0yi13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, -28.37855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, -8.0077715)
 
 [node name="Object_2" parent="GODOT PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(378704218, 1466164454) index="0" unique_id=86384638]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.234377, 0)
 material_override = ExtResource("3_m67am")
 lod_bias = 2.033
 
+[node name="Label3D" type="Label3D" parent="GODOT PBR" unique_id=1013648462]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 22.261894, -17.515326)
+pixel_size = 0.05
+text = "GODOT"
+font = SubResource("SystemFont_qwqyf")
+font_size = 100
+
 [node name="CUSTOM PBR" parent="." unique_id=2132084696 instance=ExtResource("2_0yi13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, 22.686386)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2242353, 1.1920929e-07, 51.31392)
 
 [node name="Object_2" parent="CUSTOM PBR/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(2132084696, 1466164454) index="0" unique_id=86384638]
 transform = Transform3D(1, 0.00018853719, -0.00017620015, -0.00018870323, 0.9999995, -0.0009408233, 0.00017602232, 0.0009408566, 0.9999995, 0, 23.64893, 0)
 material_override = ExtResource("4_m67am")
+
+[node name="Label3D2" type="Label3D" parent="CUSTOM PBR" unique_id=96426587]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 22.261894, -25.907532)
+pixel_size = 0.05
+text = "CUSTOM"
+font = SubResource("SystemFont_qwqyf")
+font_size = 100
 
 [editable path="GODOT PBR"]
 [editable path="CUSTOM PBR"]

@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cw2ip46gdyw2x"]
+
+[ext_resource type="Texture2D" uid="uid://crqgwdkycb7aa" path="res://Shaders/3 - PBR/Mecha/Map_Mecha_A.jpg" id="1_uvest"]
+[ext_resource type="Texture2D" uid="uid://biv8lsc351i6r" path="res://Shaders/3 - PBR/Mecha/Map_Mecha_E.jpg" id="2_qnu6y"]
+[ext_resource type="Texture2D" uid="uid://cv21uxk88xxd3" path="res://Shaders/3 - PBR/Mecha/Map_Mecha_ORM.png" id="3_uvest"]
+[ext_resource type="Texture2D" uid="uid://di28erh4wyvl1" path="res://Shaders/3 - PBR/Mecha/Map_Mecha_N.jpeg" id="4_qnu6y"]
+
+[resource]
+albedo_texture = ExtResource("1_uvest")
+metallic_texture = ExtResource("3_uvest")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_uvest")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_energy_multiplier = 5.82
+emission_texture = ExtResource("2_qnu6y")
+normal_enabled = true
+normal_texture = ExtResource("4_qnu6y")
+rim_enabled = true
