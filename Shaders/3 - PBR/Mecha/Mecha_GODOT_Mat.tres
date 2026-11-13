@@ -7,13 +7,17 @@
 
 [resource]
 albedo_texture = ExtResource("1_uvest")
+metallic = 0.08
+metallic_specular = 0.72
 metallic_texture = ExtResource("3_uvest")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("3_uvest")
 roughness_texture_channel = 1
 emission_enabled = true
-emission_energy_multiplier = 5.82
+emission_energy_multiplier = 4.13
 emission_texture = ExtResource("2_qnu6y")
 normal_enabled = true
+normal_scale = 0.75
 normal_texture = ExtResource("4_qnu6y")
 rim_enabled = true
+refraction_enabled = true

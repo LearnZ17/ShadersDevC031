@@ -64,7 +64,7 @@ void fragment() {
 	float roughRead = 	sqrt(_roughMap);
 
 	// ----- NO Convolucionado » Hack
-	float maxLod_Hack = 8.5;       //1024x512px: (1024 = 10mip, 512 = 8) » 8.5
+	float maxLod_Hack = 7.0;       //1024x512px: (1024 = 10mip, 512 = 8) » 8.5
 	float iblStrength_hack = 2.0;
 	iblStrength_hack = mix (2.0, 5.0, _metalMap);
 

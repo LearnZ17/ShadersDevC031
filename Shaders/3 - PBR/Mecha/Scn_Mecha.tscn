@@ -20,17 +20,15 @@ sky_material = SubResource("PanoramaSkyMaterial_4p81b")
 [sub_resource type="Environment" id="Environment_mtsm2"]
 background_mode = 2
 sky = SubResource("Sky_klkj8")
-sky_rotation = Vector3(0, 1.8936822, 0)
+sky_rotation = Vector3(0, -0.92676985, 0)
 glow_enabled = true
 glow_intensity = 0.34
 glow_strength = 1.05
 glow_bloom = 0.39
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vvy88"]
-load_path = "res://.godot/imported/mech_Image_1.png-f78051b72f389de2b2e29450a957b846.s3tc.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qbuw4"]
-load_path = "res://.godot/imported/mech_Image_3.jpg-24569691ab8273632b3e95ef5db9616e.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpeom"]
 resource_name = "default"
@@ -99,7 +97,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LSubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2014101683]
+handle_input_locally = false
 size = Vector2i(512, 800)
+render_target_update_mode = 4
 
 [node name="Camera3D2" type="Camera3D" parent="SubViewportContainer/LSubViewport" unique_id=203659606]
 transform = Transform3D(0.9579198, 0, 0.28703633, 0, 1, 0, -0.28703633, 0, 0.9579198, -13.85382, 12.680534, 36.079357)
@@ -117,7 +117,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="RSubViewport" type="SubViewport" parent="SubViewportContainer2" unique_id=1231683041]
+handle_input_locally = false
 size = Vector2i(512, 800)
+render_target_update_mode = 4
 
 [node name="Camera3D3" type="Camera3D" parent="SubViewportContainer2/RSubViewport" unique_id=963531524]
 transform = Transform3D(0.9579198, 0, 0.28703633, 0, 1, 0, -0.28703633, 0, 0.9579198, 34.360073, 12.681, 36.079)
@@ -127,11 +129,8 @@ fov = 48.2
 environment = SubResource("Environment_mtsm2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1157164516]
-transform = Transform3D(0.44090116, -0.27425486, -0.8546289, 0.063799605, -0.94018894, 0.33462572, -0.89528537, -0.20206183, -0.39703313, 0, 25, 30)
-light_energy = 0.832
+transform = Transform3D(0.5463836, 0.31298625, 0.7768557, 0.06411413, -0.94045854, 0.3338069, 0.8350775, -0.13257918, -0.533918, 0, 25, 30)
 shadow_enabled = true
-directional_shadow_max_distance = 5.0
-directional_shadow_pancake_size = 1.0
 script = ExtResource("2_vvy88")
 
 [node name="Mecha" type="Node3D" parent="." unique_id=748870319]
@@ -142,11 +141,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3658277, 0.4400772, 0.1903
 
 [node name="defaultMaterial_006" type="MeshInstance3D" parent="Mecha/GODOT PBR" unique_id=1154439721]
 material_override = ExtResource("6_2q11p")
-cast_shadow = 0
 mesh = SubResource("ArrayMesh_alruc")
 
 [node name="Label3D2" type="Label3D" parent="Mecha/GODOT PBR" unique_id=45303434]
-transform = Transform3D(0.057124056, 0, -0.0016677231, 0, 0.057148412, 0, 0.0016677231, 0, 0.057124056, 0.019886136, -0.34483522, 0.24150422)
+transform = Transform3D(0.057124056, 0, -0.0016677231, 0, 0.057148412, 0, 0.0016677231, 0, 0.057124056, 0.019886017, -0.34483522, 0.3320371)
 pixel_size = 0.05
 text = "GODOT"
 font = SubResource("SystemFont_qwqyf")
@@ -156,18 +154,19 @@ font_size = 100
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.366, 0.44, 0.19)
 
 [node name="Label3D3" type="Label3D" parent="Mecha/CUSTOM PBR" unique_id=1318170331]
-transform = Transform3D(0.057148393, 0, 9.733256e-10, 0, 0.057148412, 0, -9.733256e-10, 0, 0.057148393, 0.051524878, -0.35046217, 0.22095512)
+transform = Transform3D(0.057148393, 0, 9.733256e-10, 0, 0.057148412, 0, -9.733256e-10, 0, 0.057148393, 0.62824655, 0.1298146, 0.13983856)
 pixel_size = 0.05
 text = "CUSTOM"
 font = SubResource("SystemFont_qwqyf")
 font_size = 100
 
 [node name="defaultMaterial_006" type="MeshInstance3D" parent="Mecha/CUSTOM PBR" unique_id=1059108984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2989862, 0.309531, -0.44066846)
 material_override = ExtResource("8_0jxv8")
-cast_shadow = 0
 mesh = SubResource("ArrayMesh_alruc")
 
 [node name="WarHorn" type="Node3D" parent="." unique_id=1418958693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 166.14287)
 visible = false
 
 [node name="GODOT PBR" parent="WarHorn" unique_id=378704218 instance=ExtResource("2_s8yuq")]
