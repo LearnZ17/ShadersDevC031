@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://3uxp0w8hu3cx"]
+
+[ext_resource type="Shader" uid="uid://dk1mj2hs7v1gc" path="res://Shaders/0 - Common/Shaders/Emissive_SHA.gdshader" id="1_ik8f7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ik8f7")
+shader_parameter/base_color = Color(0.96804637, 0.93025273, 0.4141221, 1)
+shader_parameter/emissive_color = Color(0.66866523, 0.6271939, 0.27672878, 1)
+shader_parameter/emissive_intensity = 6.350000301625

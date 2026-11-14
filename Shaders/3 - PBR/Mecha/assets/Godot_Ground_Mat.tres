@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dntwegjmd060j"]
+
+[ext_resource type="Texture2D" uid="uid://c2qypqwivfygy" path="res://Shaders/3 - PBR/Mecha/assets/textures/Material.017_baseColor.jpeg" id="1_62jka"]
+[ext_resource type="Texture2D" uid="uid://c4f55iu34cnmo" path="res://Shaders/3 - PBR/Mecha/assets/textures/Material.017_metallicRoughness.png" id="2_ou77p"]
+[ext_resource type="Texture2D" uid="uid://d3hshf1u1nuec" path="res://Shaders/3 - PBR/Mecha/assets/textures/Material.017_normal.jpeg" id="3_yx7h8"]
+
+[resource]
+albedo_texture = ExtResource("1_62jka")
+metallic_texture = ExtResource("2_ou77p")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_ou77p")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_yx7h8")
+rim_enabled = true
+rim = 0.07
+rim_tint = 0.88
+ao_enabled = true
+ao_texture = ExtResource("2_ou77p")
+ao_on_uv2 = true

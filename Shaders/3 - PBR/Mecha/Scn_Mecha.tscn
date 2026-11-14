@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://da4y4deskg06f"]
 
 [ext_resource type="Texture2D" uid="uid://fxkcu2m78wlc" path="res://Shaders/3 - PBR/Common/IBL_Forest.exr" id="1_dcsc1"]
-[ext_resource type="Script" uid="uid://cik6q5oqo3q4t" path="res://Shaders/0 - Common/Gs_ScreenDivision.gd" id="1_qbuw4"]
+[ext_resource type="Script" uid="uid://cik6q5oqo3q4t" path="res://Shaders/0 - Common/Scripts/GDs_ScreenDivision.gd" id="1_qbuw4"]
 [ext_resource type="PackedScene" uid="uid://cq2rxpw4sy82c" path="res://Shaders/3 - PBR/WarHorn/Msh_WarHorn.glb" id="2_s8yuq"]
-[ext_resource type="Script" uid="uid://d1hkt3clwq2d7" path="res://Shaders/0 - Common/RotateTween.gd" id="2_vvy88"]
+[ext_resource type="Script" uid="uid://d1hkt3clwq2d7" path="res://Shaders/0 - Common/Scripts/GDs_RotateTween.gd" id="2_vvy88"]
 [ext_resource type="Material" uid="uid://cnjqjm50bnmtg" path="res://Shaders/3 - PBR/WarHorn/WarHorn_GD_Mat.tres" id="3_uij8h"]
 [ext_resource type="Material" uid="uid://cr8p7r0orxyt0" path="res://Shaders/3 - PBR/WarHorn/Warhorn_PBR_MAT.tres" id="4_ynrq7"]
 [ext_resource type="Material" uid="uid://cw2ip46gdyw2x" path="res://Shaders/3 - PBR/Mecha/Mecha_GODOT_Mat.tres" id="6_2q11p"]

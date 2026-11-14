@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode ambient_light_disabled, specular_disabled;
+//render_mode ambient_light_disabled;//, specular_disabled;
 
 // ===================================
 // UNIFORMS
@@ -16,6 +16,7 @@ group_uniforms I_B_L;
 	uniform sampler2D iblMap : filter_linear_mipmap;
 	uniform sampler2D lutMap;
 	uniform float iblStrenght : hint_range(0.0, 5.0, 0.1) = 1.0 ; 
+	uniform float maxLOD_Hack_Range : hint_range(1.0, 9.0, 0.1) = 8.5;
 
 // ========================================
 // AUX MATH FUNCTONS
@@ -64,7 +65,8 @@ void fragment() {
 	float roughRead = 	sqrt(_roughMap);
 
 	// ----- NO Convolucionado » Hack
-	float maxLod_Hack = 7.0;       //1024x512px: (1024 = 10mip, 512 = 8) » 8.5
+	//float maxLod_Hack = 8.5;       //1024x512px: (1024 = 10mip, 512 = 8) » 8.5
+	float maxLod_Hack = maxLOD_Hack_Range;
 	float iblStrength_hack = 2.0;
 	iblStrength_hack = mix (2.0, 5.0, _metalMap);
 

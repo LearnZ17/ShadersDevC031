@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dqoq0yamo8kej"]
+
+[ext_resource type="Shader" uid="uid://dwjdlx57yecj1" path="res://Shaders/0 - Common/Shaders/Vignette_SHA.gdshader" id="1_35dwl"]
+
+[resource]
+shader = ExtResource("1_35dwl")
+shader_parameter/player_position = Vector2(0.5, 0.5)
+shader_parameter/black = Color(0, 0, 0, 1)
+shader_parameter/MULTIPLIER = 0.5
+shader_parameter/SCALE = 0.41
+shader_parameter/SOFTNESS = 0.325

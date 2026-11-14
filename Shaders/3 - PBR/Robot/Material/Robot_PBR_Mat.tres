@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dx6twle1a2ndg"]
+
+[ext_resource type="Shader" uid="uid://cmrrodoo4yllh" path="res://Shaders/3 - PBR/Common/PBR_SHA.gdshader" id="1_ihlvx"]
+[ext_resource type="Texture2D" uid="uid://ck8hg36hfaqq1" path="res://Shaders/3 - PBR/Robot/textures/Image_0.png" id="2_er8p4"]
+[ext_resource type="Texture2D" uid="uid://watrsnwbl37k" path="res://Shaders/3 - PBR/Mecha/assets/125_hdrmaps_com_free_1K.exr" id="3_n5w8s"]
+[ext_resource type="Texture2D" uid="uid://ccsnqoiijl0x1" path="res://Shaders/3 - PBR/Common/brdfLUT.png" id="4_abqer"]
+[ext_resource type="Texture2D" uid="uid://c00s7jekh7ou4" path="res://Shaders/3 - PBR/Robot/textures/Image_2.png" id="5_g62ak"]
+[ext_resource type="Texture2D" uid="uid://cgbjj8jq0sj0v" path="res://Shaders/3 - PBR/Robot/textures/Image_1.png" id="6_3gfab"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ihlvx")
+shader_parameter/albedoMap = ExtResource("2_er8p4")
+shader_parameter/alphaThreshold = 0.0
+shader_parameter/ormMap = ExtResource("6_3gfab")
+shader_parameter/normalMap = ExtResource("5_g62ak")
+shader_parameter/normalStrength = 1.0
+shader_parameter/emissionIntensity = 0.0
+shader_parameter/iblMap = ExtResource("3_n5w8s")
+shader_parameter/lutMap = ExtResource("4_abqer")
+shader_parameter/iblStrenght = 0.40000000596048
+shader_parameter/maxLOD_Hack_Range = 8.500000111759
