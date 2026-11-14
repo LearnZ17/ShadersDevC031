@@ -21,4 +21,4 @@ shader_parameter/emissionIntensity = 1.5000000223518
 shader_parameter/iblMap = ExtResource("4_y5p5k")
 shader_parameter/lutMap = ExtResource("4_qpegh")
 shader_parameter/iblStrenght = 0.5000000074506
-shader_parameter/maxLOD_Hack_Range = 6.70000008493684
+shader_parameter/maxLOD_Hack_Range = 7.40000009536768

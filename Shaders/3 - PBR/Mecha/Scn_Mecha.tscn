@@ -144,7 +144,7 @@ material_override = ExtResource("6_2q11p")
 mesh = SubResource("ArrayMesh_alruc")
 
 [node name="Label3D2" type="Label3D" parent="Mecha/GODOT PBR" unique_id=45303434]
-transform = Transform3D(0.057124056, 0, -0.0016677231, 0, 0.057148412, 0, 0.0016677231, 0, 0.057124056, 0.019886017, -0.34483522, 0.3320371)
+transform = Transform3D(0.057124056, 0, -0.0016677231, 0, 0.057148412, 0, 0.0016677231, 0, 0.057124056, -0.021612763, -0.37216288, 0.4686976)
 pixel_size = 0.05
 text = "GODOT"
 font = SubResource("SystemFont_qwqyf")
@@ -154,7 +154,7 @@ font_size = 100
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.366, 0.44, 0.19)
 
 [node name="Label3D3" type="Label3D" parent="Mecha/CUSTOM PBR" unique_id=1318170331]
-transform = Transform3D(0.057148393, 0, 9.733256e-10, 0, 0.057148412, 0, -9.733256e-10, 0, 0.057148393, 0.62824655, 0.1298146, 0.13983856)
+transform = Transform3D(0.057148393, 0, 9.733256e-10, 0, 0.057148412, 0, -9.733256e-10, 0, 0.057148393, 0.37537563, 0.1298146, 0.19412924)
 pixel_size = 0.05
 text = "CUSTOM"
 font = SubResource("SystemFont_qwqyf")
