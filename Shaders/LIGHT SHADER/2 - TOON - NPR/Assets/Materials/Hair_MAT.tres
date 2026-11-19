@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://s7q55knpoglc"]
+
+[ext_resource type="Shader" uid="uid://dup0e2cb3tlat" path="res://Shaders/LIGHT SHADER/2 - TOON - NPR/ToonShading_SHA.gdshader" id="1_t7o82"]
+[ext_resource type="Texture2D" uid="uid://hhiaodc8yt3k" path="res://Shaders/LIGHT SHADER/2 - TOON - NPR/Assets/Textures/Image_5.png" id="2_pxl81"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_t7o82")
+shader_parameter/baseColor = Color(0.99237806, 0.97172564, 0.9813717, 1)
+shader_parameter/albedoText = ExtResource("2_pxl81")
+shader_parameter/useTexture = true
+shader_parameter/shadeOpacity = 0.4810000228475
+shader_parameter/addSpecular = true
+shader_parameter/glossSharp = 9.058000382755
+shader_parameter/addFresnel = true
+shader_parameter/rimEdge = 0.41700001910898
+shader_parameter/rimLightColor = Color(0.3454618, 0.7202245, 0.95253557, 1)

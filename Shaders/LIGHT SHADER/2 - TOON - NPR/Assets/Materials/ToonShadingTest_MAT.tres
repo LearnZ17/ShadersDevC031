@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://by4caqy4tb3m3"]
+
+[ext_resource type="Shader" uid="uid://dup0e2cb3tlat" path="res://Shaders/LIGHT SHADER/2 - TOON - NPR/ToonShading_SHA.gdshader" id="1_lqyv3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_lqyv3")
+shader_parameter/baseColor = Color(4.3317677e-06, 0.6214124, 0.6891272, 1)
+shader_parameter/useTexture = false
+shader_parameter/shadeOpacity = 0.6910000328225
+shader_parameter/addSpecular = true
+shader_parameter/glossSharp = 135.99200641212
+shader_parameter/addFresnel = true
+shader_parameter/rimEdge = 0.6380000296064801
+shader_parameter/rimLightColor = Color(0.32959494, 0.7351667, 0.7878897, 1)

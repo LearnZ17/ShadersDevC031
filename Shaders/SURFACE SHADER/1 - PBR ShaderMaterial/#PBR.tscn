@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bege8u73ifbaw"]
+
+[ext_resource type="PackedScene" uid="uid://cq2rxpw4sy82c" path="res://Shaders/LIGHT SHADER/3 - PBR/WarHorn/Msh_WarHorn.glb" id="1_deh11"]
+[ext_resource type="Material" uid="uid://dnfuc3ddtc16u" path="res://Shaders/SURFACE SHADER/0 - Template/x_Mat.tres" id="2_4kaem"]
+[ext_resource type="Material" uid="uid://c27s8lvmguaib" path="res://Shaders/SURFACE SHADER/0 - Template/x_VS_Mat.tres" id="3_yjpfq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_okb3y"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_433pb"]
+sky_material = SubResource("ProceduralSkyMaterial_okb3y")
+
+[sub_resource type="Environment" id="Environment_1exic"]
+background_mode = 2
+sky = SubResource("Sky_433pb")
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=1912832969]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1854918981]
+environment = SubResource("Environment_1exic")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=314905253]
+transform = Transform3D(0.83822876, 0.012373966, -0.5451783, 0.5453188, -0.019020466, 0.83801305, 0, -0.9997426, -0.022691257, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+directional_shadow_max_distance = 2.0
+directional_shadow_pancake_size = 0.1
+
+[node name="CS_WarHorn" parent="." unique_id=1361864093 instance=ExtResource("1_deh11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13845068, 0, -26.854683)
+
+[node name="Object_2" parent="CS_WarHorn/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(1361864093, 291467843) index="0" unique_id=1395904190]
+material_override = ExtResource("2_4kaem")
+
+[node name="Label3D" type="Label3D" parent="CS_WarHorn" unique_id=184885020]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 31.818748, -0.6142311)
+pixel_size = 0.1
+text = "CD SHADER"
+font_size = 50
+
+[node name="VS_WarHorn" parent="." unique_id=140112807 instance=ExtResource("1_deh11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13845068, 0, 28.137236)
+
+[node name="Object_2" parent="VS_WarHorn/Sketchfab_model/Warhorn_obj_cleaner_materialmerger_gles" parent_id_path=PackedInt32Array(140112807, 291467843) index="0" unique_id=1395904190]
+material_override = ExtResource("3_yjpfq")
+
+[node name="Label3D2" type="Label3D" parent="VS_WarHorn" unique_id=906242597]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 31.818748, -1.3350849)
+pixel_size = 0.1
+text = "VS SHADER"
+font_size = 50
+
+[editable path="CS_WarHorn"]
+[editable path="VS_WarHorn"]
