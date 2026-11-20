@@ -1,3 +1,15 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://db7v8hp4iaoh8"]
 
+[ext_resource type="Shader" uid="uid://bvbu5tmv8bav1" path="res://Shaders/SURFACE SHADER/1 - PBR ShaderMaterial/PBR_VS_SHA.tres" id="1_auio6"]
+[ext_resource type="Texture2D" uid="uid://biljf45bb6lp1" path="res://Shaders/LIGHT SHADER/3 - PBR/WarHorn/Map_WarHorn_A.png" id="2_w74h7"]
+[ext_resource type="Texture2D" uid="uid://dh2y5ievloeip" path="res://Shaders/LIGHT SHADER/3 - PBR/WarHorn/Map_WarHorn_N.png" id="3_wl2g5"]
+[ext_resource type="Texture2D" uid="uid://oj4vyj80nwvv" path="res://Shaders/LIGHT SHADER/3 - PBR/WarHorn/Map_WarHorn_ORM.png" id="4_suvjj"]
+
 [resource]
+render_priority = 0
+shader = ExtResource("1_auio6")
+shader_parameter/albedoMap = ExtResource("2_w74h7")
+shader_parameter/ormMap = ExtResource("4_suvjj")
+shader_parameter/normalMap = ExtResource("3_wl2g5")
+shader_parameter/normalIntensity = 1.0
+shader_parameter/alphaClip = 0.5

@@ -13,12 +13,12 @@ default_value_enabled = true
 default_value = 1.0
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_5bx7f"]
-size = Vector2(587.00037, 364.00006)
+size = Vector2(586.99994, 364)
 title = "ORM Map"
 attached_nodes = PackedInt32Array(4, 6)
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_acpbq"]
-size = Vector2(640.00037, 587)
+size = Vector2(640.00006, 586.99994)
 title = "NORMAL MAP"
 attached_nodes = PackedInt32Array(3, 7, 10)
 
@@ -55,7 +55,7 @@ parameter_name = "normalMap"
 texture_type = 2
 
 [sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_jiy4f"]
-size = Vector2(680.0002, 637.00006)
+size = Vector2(680.00006, 637)
 title = "ALBEDO"
 attached_nodes = PackedInt32Array(2, 5, 9)
 

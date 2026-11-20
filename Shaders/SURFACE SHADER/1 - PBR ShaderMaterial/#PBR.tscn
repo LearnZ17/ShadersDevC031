@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bege8u73ifbaw"]
 
 [ext_resource type="PackedScene" uid="uid://cq2rxpw4sy82c" path="res://Shaders/LIGHT SHADER/3 - PBR/WarHorn/Msh_WarHorn.glb" id="1_deh11"]
-[ext_resource type="Material" uid="uid://dnfuc3ddtc16u" path="res://Shaders/SURFACE SHADER/0 - Template/x_Mat.tres" id="2_4kaem"]
-[ext_resource type="Material" uid="uid://c27s8lvmguaib" path="res://Shaders/SURFACE SHADER/0 - Template/x_VS_Mat.tres" id="3_yjpfq"]
+[ext_resource type="Material" uid="uid://bc71786m1v1kb" path="res://Shaders/SURFACE SHADER/1 - PBR ShaderMaterial/PBR_CS_Mat.tres" id="2_4kaem"]
+[ext_resource type="Material" uid="uid://db7v8hp4iaoh8" path="res://Shaders/SURFACE SHADER/1 - PBR ShaderMaterial/PBR_VS_Mat.tres" id="3_yjpfq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_okb3y"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)

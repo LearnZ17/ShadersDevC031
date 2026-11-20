@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://w8oxy5we68sp"]
+
+[ext_resource type="Shader" uid="uid://brlck2cim1mx0" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendColors_VS_SHA.tres" id="1_semme"]
+[ext_resource type="Material" uid="uid://nt3wlxthl5eo" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendColors_CS_Mat.tres" id="2_drgel"]
+[ext_resource type="Texture2D" uid="uid://7sfvx1pbj8g4" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/Assets/rock_Text.jpg" id="2_y3j27"]
+[ext_resource type="Texture2D" uid="uid://oav77n11kbxv" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/Assets/paint_Tex.png" id="3_usxiw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y3j27"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_usxiw"]
+sky_material = SubResource("ProceduralSkyMaterial_y3j27")
+
+[sub_resource type="Environment" id="Environment_68edl"]
+background_mode = 2
+sky = SubResource("Sky_usxiw")
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_stf45"]
+render_priority = 0
+shader = ExtResource("1_semme")
+shader_parameter/BaseTile = 1.9690000935275
+shader_parameter/BaseMap = ExtResource("2_y3j27")
+shader_parameter/BlendTile = 5.0
+shader_parameter/BlendMap = ExtResource("3_usxiw")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_62yky"]
+
+[node name="Node3D" type="Node3D" unique_id=2133095814]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=549509551]
+environment = SubResource("Environment_68edl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1124654013]
+transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.19462743, 0.16862395, 0.9662744, -0.46056512, 0.8854749, -0.06175649, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1077496642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4736698)
+material_override = SubResource("ShaderMaterial_stf45")
+mesh = SubResource("PlaneMesh_62yky")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D" unique_id=1205612643]
+transform = Transform3D(0.01575317, 0, -0.9998759, 0, 1, 0, 0.9998759, 0, 0.01575317, 0, 1.1177642, 0)
+pixel_size = 0.01
+text = "VS SHADER"
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=461349092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5044725)
+material_override = ExtResource("2_drgel")
+mesh = SubResource("PlaneMesh_62yky")
+
+[node name="Label3D2" type="Label3D" parent="MeshInstance3D2" unique_id=43875219]
+transform = Transform3D(0.01575317, 0, -0.9998759, 0, 1, 0, 0.9998759, 0, 0.01575317, 0, 1.1177642, -0.13193154)
+pixel_size = 0.01
+text = "CS SHADER"

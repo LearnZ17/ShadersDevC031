@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://nt3wlxthl5eo"]
+
+[ext_resource type="Shader" uid="uid://drb1mtyrgixmu" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendColors_CS_SHA.gdshader" id="1_mq32u"]
+[ext_resource type="Texture2D" uid="uid://7sfvx1pbj8g4" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/Assets/rock_Text.jpg" id="2_jrt8h"]
+[ext_resource type="Texture2D" uid="uid://oav77n11kbxv" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/Assets/paint_Tex.png" id="3_oeto4"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mq32u")
+shader_parameter/baseTile = 2.110000031069
+shader_parameter/baseMap = ExtResource("2_jrt8h")
+shader_parameter/blendTile = 5.0
+shader_parameter/blendMap = ExtResource("3_oeto4")
