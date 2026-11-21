@@ -6,7 +6,7 @@ extends Node3D
 @export var max_zoom: float = 100.0
 
 @onready var horizontal_pivot: Node3D = self
-@onready var vertical_pivot: Node3D = $Vertical_X_Pivot # El nodo hijo para el eje X
+@onready var vertical_pivot: Node3D = $Vertical_X_Pivot# El nodo hijo para el eje X
 @onready var spring_arm: SpringArm3D = $Vertical_X_Pivot/SpringArm3D
 
 func _ready() -> void:

@@ -1,21 +1,23 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://dmbumg3o17rcf"]
 
 [ext_resource type="Shader" uid="uid://c53ibjcwq6d37" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/FullBlendColors_CS_SHA.gdshader" id="1_kc3lr"]
-[ext_resource type="Texture2D" uid="uid://gwkyhho7mt1" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_baseColor.png" id="2_lkdvh"]
-[ext_resource type="Texture2D" uid="uid://uwt5fvqtskne" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_emissive.jpeg" id="3_6ba8e"]
-[ext_resource type="Texture2D" uid="uid://b2ghoikmth2ir" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_normal.jpeg" id="4_iichl"]
-[ext_resource type="Texture2D" uid="uid://ca0ndosihcn4u" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_metallicRoughness.png" id="5_xg7jy"]
+[ext_resource type="Texture2D" uid="uid://gwkyhho7mt1" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_baseColor.png" id="2_6ba8e"]
+[ext_resource type="Texture2D" uid="uid://b8mxq123ogpjy" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/HackImage.png" id="3_iichl"]
+[ext_resource type="Texture2D" uid="uid://uwt5fvqtskne" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_emissive.jpeg" id="4_xg7jy"]
+[ext_resource type="Texture2D" uid="uid://b2ghoikmth2ir" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_normal.jpeg" id="5_qc23a"]
+[ext_resource type="Texture2D" uid="uid://ca0ndosihcn4u" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors02_metallicRoughness.png" id="6_xjg26"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_kc3lr")
-shader_parameter/blend_mode = 7
-shader_parameter/baseTile = 1.01000001467768
-shader_parameter/baseMap = ExtResource("2_lkdvh")
-shader_parameter/blendTile = 1.01000001467768
-shader_parameter/blendMap = ExtResource("2_lkdvh")
+shader_parameter/blend_mode = 0
+shader_parameter/baseTile = 1.6100000236184
+shader_parameter/baseMap = ExtResource("2_6ba8e")
+shader_parameter/blendTile = 0.9100000131875601
+shader_parameter/blendMap = ExtResource("3_iichl")
 shader_parameter/alphaClip = 0.5000000074506
-shader_parameter/ormMap = ExtResource("5_xg7jy")
-shader_parameter/normalMap = ExtResource("4_iichl")
+shader_parameter/ormMap = ExtResource("6_xjg26")
+shader_parameter/normalMap = ExtResource("5_qc23a")
 shader_parameter/normalIntensity = 1.0
-shader_parameter/emissiveMap = ExtResource("3_6ba8e")
+shader_parameter/emissiveMap = ExtResource("4_xg7jy")
+shader_parameter/emissiveIntensity = 3.6000000536443197

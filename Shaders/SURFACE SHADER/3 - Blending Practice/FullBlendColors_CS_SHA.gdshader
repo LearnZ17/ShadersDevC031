@@ -15,11 +15,16 @@ uniform sampler2D normalMap : hint_normal, filter_linear_mipmap;
 uniform float normalIntensity : hint_range(0.0, 5.0, 0.01) = 1.0;
 
 uniform sampler2D emissiveMap : source_color, filter_linear_mipmap;
+uniform float emissiveIntensity : hint_range(0.0,10.0, 0.1) = 0.0;
 
 void fragment() {
 	// SANPLING
 	vec4 _baseMap = texture(baseMap, UV * baseTile);
-	vec4 _blendMap = texture(blendMap, UV * blendTile);
+	
+	vec2 mirrored_uv = UV;
+    mirrored_uv.y = 1.0 - mirrored_uv.y; 
+	
+	vec4 _blendMap = texture(blendMap, mirrored_uv * blendTile);
 	
 	vec3 _normalMap = texture(normalMap, UV).rgb;
 	vec3 _ormMap = texture(ormMap, UV).rgb;
@@ -27,8 +32,8 @@ void fragment() {
 	
 	// OUTPUT BUFFERS
 	ALBEDO = apply_blend(blend_mode, _baseMap.rgb, _blendMap.rgb);
-	//ALBEDO = _baseMap.rgb;
 	
+	//ALBEDO = _baseMap.rgb;
 	//AO = _ormMap.b;
 	
 	ROUGHNESS = _ormMap.g;
@@ -40,5 +45,5 @@ void fragment() {
 	ALPHA = _baseMap.a;// * _blendMap.a;
 	//ALPHA_SCISSOR_THRESHOLD = alphaClip;
 	
-	EMISSION = _emissiveMap * 2.2;
+	EMISSION = apply_blend(blend_mode, _emissiveMap.rgb, _blendMap.rgb) * emissiveIntensity;
 }

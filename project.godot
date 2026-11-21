@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ShaderDev31"
-run/main_scene="uid://dvvefovyrmeub"
+run/main_scene="uid://dhcj5cb0j11gm"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
