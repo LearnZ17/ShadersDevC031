@@ -1,0 +1,101 @@
+[gd_resource type="VisualShader" format=3 uid="uid://cufwprl8o73cb"]
+
+[ext_resource type="Texture2D" uid="uid://dh2y5ievloeip" path="res://Shaders/LIGHT SHADER/3 - PBR/WarHorn/Map_WarHorn_N.png" id="1_k3aky"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_u67go"]
+linked_parent_graph_frame = 13
+parameter_name = "normalIntensity"
+hint = 2
+max = 2.0
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_q3pdx"]
+size = Vector2(680.00024, 607.0006)
+title = "NORMAL MAP"
+attached_nodes = PackedInt32Array(9, 10, 8)
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_iyoa3"]
+linked_parent_graph_frame = 18
+parameter_name = "ormMap"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_32bes"]
+expanded_output_ports = [0]
+linked_parent_graph_frame = 18
+source = 5
+
+[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_c1fn3"]
+size = Vector2(587.00024, 371.00006)
+title = "ORM"
+attached_nodes = PackedInt32Array(15, 14)
+
+[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_atc31"]
+size = Vector2(587.0001, 364.0003)
+title = "ALBEDO"
+attached_nodes = PackedInt32Array(2, 3)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_i0jun"]
+linked_parent_graph_frame = 19
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_pmqmm"]
+linked_parent_graph_frame = 22
+source = 5
+texture = ExtResource("1_k3aky")
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_4hbvp"]
+linked_parent_graph_frame = 22
+parameter_name = "emissiveMap"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_lec22"]
+size = Vector2(547, 364.00024)
+title = "EMISSIVE"
+attached_nodes = PackedInt32Array(20, 21)
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_olnr7"]
+linked_parent_graph_frame = 19
+parameter_name = "albedoMap"
+texture_type = 1
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_rkxl7"]
+linked_parent_graph_frame = 13
+source = 5
+texture = ExtResource("1_k3aky")
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_xox1y"]
+linked_parent_graph_frame = 13
+parameter_name = "normalMap"
+texture_type = 2
+
+[resource]
+nodes/fragment/0/position = Vector2(400, 380)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_i0jun")
+nodes/fragment/2/position = Vector2(-180, -80)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_olnr7")
+nodes/fragment/3/position = Vector2(-480, -120)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_rkxl7")
+nodes/fragment/8/position = Vector2(-180, 700)
+nodes/fragment/9/node = SubResource("VisualShaderNodeTexture2DParameter_xox1y")
+nodes/fragment/9/position = Vector2(-560, 680)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_u67go")
+nodes/fragment/10/position = Vector2(-240, 920)
+nodes/fragment/12/position = Vector2(0, 0)
+nodes/fragment/13/node = SubResource("VisualShaderNodeFrame_q3pdx")
+nodes/fragment/13/position = Vector2(-600, 640)
+nodes/fragment/14/node = SubResource("VisualShaderNodeTexture2DParameter_iyoa3")
+nodes/fragment/14/position = Vector2(-480, 280)
+nodes/fragment/15/node = SubResource("VisualShaderNodeTexture_32bes")
+nodes/fragment/15/position = Vector2(-180, 340)
+nodes/fragment/18/node = SubResource("VisualShaderNodeFrame_c1fn3")
+nodes/fragment/18/position = Vector2(-520, 240)
+nodes/fragment/19/node = SubResource("VisualShaderNodeFrame_atc31")
+nodes/fragment/19/position = Vector2(-520, -160)
+nodes/fragment/20/node = SubResource("VisualShaderNodeTexture_pmqmm")
+nodes/fragment/20/position = Vector2(-160, 1340)
+nodes/fragment/21/node = SubResource("VisualShaderNodeTexture2DParameter_4hbvp")
+nodes/fragment/21/position = Vector2(-420, 1320)
+nodes/fragment/22/node = SubResource("VisualShaderNodeFrame_lec22")
+nodes/fragment/22/position = Vector2(-460, 1280)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 0, 0, 9, 0, 8, 2, 8, 0, 0, 9, 10, 0, 0, 10, 14, 0, 15, 2, 15, 1, 0, 6, 15, 2, 0, 3, 15, 3, 0, 2, 21, 0, 20, 2, 20, 0, 0, 5)

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dhcj5cb0j11gm"]
+
+[ext_resource type="PackedScene" uid="uid://dnvu7h0to7fbd" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/Computer.blend" id="1_w8xmf"]
+[ext_resource type="Material" uid="uid://cvy4iix0svqgn" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Practice_PBR_VS_Mat.tres" id="2_vsn1n"]
+[ext_resource type="Material" uid="uid://dmbumg3o17rcf" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/FullBlendColors_CS_Mat.tres" id="3_vsn1n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vxrk"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_5lkwp"]
+sky_material = SubResource("ProceduralSkyMaterial_4vxrk")
+
+[sub_resource type="Environment" id="Environment_ytf21"]
+background_mode = 2
+sky = SubResource("Sky_5lkwp")
+glow_enabled = true
+
+[node name="Node3D" type="Node3D" unique_id=1863005776]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1324130588]
+environment = SubResource("Environment_ytf21")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1197197042]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 5.675089, 0)
+shadow_enabled = true
+
+[node name="Computer2" parent="." unique_id=359669291 instance=ExtResource("1_w8xmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0387173, 0, 0.08753848)
+
+[node name="Computer" parent="." unique_id=632418370 instance=ExtResource("1_w8xmf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10831094, 0, 0.08753848)
+
+[node name="Mesh" parent="Computer" index="0" unique_id=1689522703]
+material_override = ExtResource("2_vsn1n")
+
+[node name="Screens" parent="Computer" index="1" unique_id=407287480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09103584)
+material_override = ExtResource("3_vsn1n")
+
+[editable path="Computer2"]
+[editable path="Computer"]
