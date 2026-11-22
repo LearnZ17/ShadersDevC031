@@ -2,24 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjpf32u8i5243"
-path.s3tc="res://.godot/imported/Room_Image_0.jpg-dd75468d6110226dc9aeee485dda7c48.s3tc.ctex"
+uid="uid://k55ytr87r3h8"
+path="res://.godot/imported/M_Body_0_diffuse.png-da40a88c5901484787ff3b0f168c9183.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "61788b2cce91eaf35a55c20d7c8e3e9b"
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/Room/Room_Image_0.jpg"
-dest_files=["res://.godot/imported/Room_Image_0.jpg-dd75468d6110226dc9aeee485dda7c48.s3tc.ctex"]
+source_file="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/Assets/PC/textures/M_Body_0_diffuse.png"
+dest_files=["res://.godot/imported/M_Body_0_diffuse.png-da40a88c5901484787ff3b0f168c9183.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -27,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -41,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

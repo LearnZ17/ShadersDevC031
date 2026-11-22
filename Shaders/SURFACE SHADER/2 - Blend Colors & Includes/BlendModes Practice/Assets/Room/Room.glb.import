@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cs6r7iptkxa8c"
-path="res://.godot/imported/Room.glb-a389aff1431774fbd9ce7a7302c5485c.scn"
+path="res://.godot/imported/Room.glb-60770eb8e5cda6e3190eb86a6e5d8c0c.scn"
 
 [deps]
 
-source_file="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/Room/Room.glb"
-dest_files=["res://.godot/imported/Room.glb-a389aff1431774fbd9ce7a7302c5485c.scn"]
+source_file="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/Assets/Room/Room.glb"
+dest_files=["res://.godot/imported/Room.glb-60770eb8e5cda6e3190eb86a6e5d8c0c.scn"]
 
 [params]
 

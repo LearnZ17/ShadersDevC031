@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dnvu7h0to7fbd"
-path="res://.godot/imported/Computer.blend-324ffd5a3cd3431ae4773f16a15d4b49.scn"
+path="res://.godot/imported/Computer.blend-9c89e177d985604c30310c1fef89cffe.scn"
 
 [deps]
 
-source_file="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/Computer.blend"
-dest_files=["res://.godot/imported/Computer.blend-324ffd5a3cd3431ae4773f16a15d4b49.scn"]
+source_file="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/Assets/PC/Computer.blend"
+dest_files=["res://.godot/imported/Computer.blend-9c89e177d985604c30310c1fef89cffe.scn"]
 
 [params]
 

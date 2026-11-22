@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxnasvemb3hft"
-path.s3tc="res://.godot/imported/MAT_Monitors01_metallicRoughness.png-2ba7de1d9fb8e64d65b66e04a71f9320.s3tc.ctex"
+uid="uid://b2ghoikmth2ir"
+path.bptc="res://.godot/imported/MAT_Monitors02_normal.jpeg-847d1d6ef93194b6893493a5e0966b26.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,22 +11,22 @@ metadata={
 
 [deps]
 
-source_file="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/textures/MAT_Monitors01_metallicRoughness.png"
-dest_files=["res://.godot/imported/MAT_Monitors01_metallicRoughness.png-2ba7de1d9fb8e64d65b66e04a71f9320.s3tc.ctex"]
+source_file="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/Assets/PC/textures/MAT_Monitors02_normal.jpeg"
+dest_files=["res://.godot/imported/MAT_Monitors02_normal.jpeg-847d1d6ef93194b6893493a5e0966b26.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=1
 compress/channel_pack=1
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1

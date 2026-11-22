@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dhcj5cb0j11gm"]
 
 [ext_resource type="Material" uid="uid://dqoq0yamo8kej" path="res://Shaders/LIGHT SHADER/0 - Common/Materials/Vignette_Mat.tres" id="1_eung0"]
-[ext_resource type="PackedScene" uid="uid://dnvu7h0to7fbd" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/PC/Computer.blend" id="1_w8xmf"]
+[ext_resource type="PackedScene" uid="uid://dnvu7h0to7fbd" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/Assets/PC/Computer.blend" id="1_w8xmf"]
 [ext_resource type="Script" uid="uid://c1wogp6prg65g" path="res://Shaders/LIGHT SHADER/0 - Common/Scripts/GDs_CamController.gd" id="2_3tmbq"]
-[ext_resource type="Material" uid="uid://cvy4iix0svqgn" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Practice_PBR_VS_Mat.tres" id="2_vsn1n"]
-[ext_resource type="Material" uid="uid://dmbumg3o17rcf" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/FullBlendColors_CS_Mat.tres" id="3_vsn1n"]
-[ext_resource type="PackedScene" uid="uid://cs6r7iptkxa8c" path="res://Shaders/SURFACE SHADER/3 - Blending Practice/Assets/Room/Room.glb" id="4_lwvqc"]
+[ext_resource type="Material" uid="uid://cvy4iix0svqgn" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/Practice_PBR_VS_Mat.tres" id="2_vsn1n"]
+[ext_resource type="Material" uid="uid://dmbumg3o17rcf" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/FullBlendColors_CS_Mat.tres" id="3_vsn1n"]
+[ext_resource type="PackedScene" uid="uid://cs6r7iptkxa8c" path="res://Shaders/SURFACE SHADER/2 - Blend Colors & Includes/BlendModes Practice/Assets/Room/Room.glb" id="4_lwvqc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4vxrk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
